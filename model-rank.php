@@ -15,7 +15,7 @@ function selectrank() {
 function insertrank($rnumber,$rtotalpoints) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `rank` (`rank_number`, `total_points`) VALUES ('?', '?'); ");
+        $stmt = $conn->prepare("INSERT INTO `rank` (`rank_number`, `total_points`) VALUES (?, ?);");
         $stmt->bind_param("ss", $rnumber, $rtotalpoints);
         $success = $stmt->execute();
         $conn->close();
