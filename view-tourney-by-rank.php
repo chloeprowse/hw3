@@ -14,15 +14,15 @@
     <tbody>
       <?php
 
-      while ($tourney = $tourney->fetch_assoc()) { 
+      while ($tourneys = $tourney->fetch_assoc()) { 
       ?>
         <tr>
-          <td><?php echo $tourney['rank_id']; ?></td>
-          <td><?php echo $tourney['rank_number']; ?></td>
-          <td><?php echo $tourney['total_points']; ?></td>
-          <td><?php echo $tourney['tourney_name']; ?></td>
-          <td><?php echo $tourney['country']; ?></td>
-          <td><?php echo $tourney['day_time']; ?></td>
+          <td><?php echo $tourneys['rank_id']; ?></td>
+          <td><?php echo $tourneys['rank_number']; ?></td>
+          <td><?php echo $tourneys['total_points']; ?></td>
+          <td><?php echo $tourneys['tourney_name']; ?></td>
+          <td><?php echo $tourneys['country']; ?></td>
+          <td><?php echo $tourneys['day_time']; ?></td>
         </tr>
       <?php
       } 
