@@ -14,7 +14,7 @@
     <tbody>
       <?php
 
-      while ($tourney = $tourneys->fetch_assoc()) { 
+      while ($tourney = $tourney->fetch_assoc()) { 
       ?>
         <tr>
           <td><?php echo $tourney['rank_id']; ?></td>
