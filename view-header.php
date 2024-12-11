@@ -20,16 +20,13 @@
           <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="wtennispros.php">Womens </a>
+          <a class="nav-link" href="wtennispros.php">Womens Tennis Pros</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="mtennispros.php">Mens Tennis Pros</a>
+          <a class="nav-link" href="rank.php">Rank</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="wtennispros-with-tourney.php">Womens Tennis Pros Tourney</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="mtennispros-with-tourney.php">Mens Tennis Pros Tourney</a>
         </li>
       </ul>
     </div>
