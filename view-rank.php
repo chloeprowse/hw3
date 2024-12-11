@@ -11,7 +11,7 @@
     <tbody>
       <?php
 
-      while ($rank = $ranks->fetch_assoc()) { 
+      while ($ranks = $rank->fetch_assoc()) { 
       ?>
         <tr>
           <td><?php echo $ranks['rank_id']; ?></td>
