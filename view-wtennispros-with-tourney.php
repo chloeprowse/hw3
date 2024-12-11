@@ -4,10 +4,6 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Country</th>
-        <th></th>   
       </tr>
     </thead>
     <tbody>
