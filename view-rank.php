@@ -14,9 +14,9 @@
       while ($rank = $ranks->fetch_assoc()) { 
       ?>
         <tr>
-          <td><?php echo $rank['rank_id']; ?></td>
-          <td><?php echo $rank['rank_number']; ?></td>
-          <td><?php echo $rank['total_points']; ?></td>
+          <td><?php echo $ranks['rank_id']; ?></td>
+          <td><?php echo $ranks['rank_number']; ?></td>
+          <td><?php echo $ranks['total_points']; ?></td>
         </tr>
       <?php
       } 
