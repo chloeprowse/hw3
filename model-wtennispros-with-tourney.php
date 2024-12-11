@@ -12,6 +12,7 @@ function selectwomenstennispros() {
         throw $e;
     }
 }
+?>
 <?php
 function selecttourneybywtennispro($wid) {
     try {
@@ -28,4 +29,4 @@ function selecttourneybywtennispro($wid) {
     }
 }
 ?>
-?>
+
