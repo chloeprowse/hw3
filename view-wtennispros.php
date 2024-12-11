@@ -11,7 +11,7 @@
     <tbody>
       <?php
 
-      while ($womenstennispro = $w_tennispro->fetch_assoc()) { // Fix missing closing parenthesis
+      while ($womenstennispro = $womenstennispros->fetch_assoc()) { 
       ?>
         <tr>
           <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
