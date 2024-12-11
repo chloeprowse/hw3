@@ -25,6 +25,7 @@
             <label for="rtotalpoints" class="form-label">Total Points</label>
             <input type="password" class="form-control" id="rtotalpoints" name="rtotalpoints">
           </div>
+            <input type="hidden" class="actionType" value="Add">
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
       </div>
