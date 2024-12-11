@@ -11,12 +11,12 @@
     <tbody>
       <?php
 
-      while ($w_tennispro = $w_tennispro->fetch_assoc()) { // Fix missing closing parenthesis
+      while ($womenstennispro = $w_tennispro->fetch_assoc()) { // Fix missing closing parenthesis
       ?>
         <tr>
-          <td><?php echo $w_tennispro['w_tennispro_id']; ?></td>
-          <td><?php echo $w_tennispro['w_tennispro_name']; ?></td>
-          <td><?php echo $w_tennispro['country']; ?></td>
+          <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
+          <td><?php echo $womenstennispro['w_tennispro_name']; ?></td>
+          <td><?php echo $womenstennispro['country']; ?></td>
         </tr>
       <?php
       } 
