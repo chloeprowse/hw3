@@ -26,7 +26,7 @@
         $tourneys = selecttourneybywtennispro($womenstennispro['w_tennispro_id']);
         while ($tourney = $tourneys->fetch_assoc()) {
         ?>
-          <li class="list-group-item"><?php echo $ranks['rank_number']; ?> - <?php echo $ranks['total_points']; ?> - <?php echo $ranks['tourney_name']; ?> - <?php echo $ranks['country']; ?> - <?php echo $ranks['day_time']; ?></li>
+          <li class="list-group-item"><?php echo $tourney['rank_number']; ?> - <?php echo $tourney['total_points']; ?> - <?php echo $tourney['tourney_name']; ?> - <?php echo $tourney['country']; ?> - <?php echo $tourney['day_time']; ?></li>
         
         <?php
         }
