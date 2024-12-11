@@ -10,12 +10,12 @@
     </thead>
     <tbody>
 <?php
-while ($womenstennispro = $w_tennispro ->fetch_assoc()
+while ($w_tennispro = $w_tennispro ->fetch_assoc()
 ?>
   <tr>
-    <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
-    <td><?php echo $womenstennispro['w_tennispro_name']; ?></td>
-    <td><?php echo $womenstennispro['country']; ?></td>
+    <td><?php echo $w_tennispro['w_tennispro_id']; ?></td>
+    <td><?php echo $w_tennispro['w_tennispro_name']; ?></td>
+    <td><?php echo $w_tennispro['country']; ?></td>
   </tr>
 <?php 
    </tbody>
