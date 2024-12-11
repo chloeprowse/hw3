@@ -19,11 +19,11 @@
         <form method="post" action="">
           <div class="mb-3">
             <label for="rnumber" class="form-label">Rank Number</label>
-            <input type="email" class="form-control" id="rnumber" name="rnumber">
+            <input type="text" class="form-control" id="rnumber" name="rnumber">
           </div>
           <div class="mb-3">
             <label for="rtotalpoints" class="form-label">Total Points</label>
-            <input type="password" class="form-control" id="rtotalpoints" name="rtotalpoints">
+            <input type="text" class="form-control" id="rtotalpoints" name="rtotalpoints">
           </div>
             <input type="hidden" class="actionType" value="Add">
           <button type="submit" class="btn btn-primary">Save</button>
