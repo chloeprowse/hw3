@@ -18,7 +18,7 @@
           <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
           <td><?php echo $womenstennispro['w_tennispro_name']; ?></td>
           <td><?php echo $womenstennispro['country']; ?></td>
-          <td><a href="tourney-by-tennispro.php?id=<?php echo $womenstennispro['w_tennispro_id']; ?>">Rank</a>a></td>
+          <td><a href="tourney-by-wtennispro.php?id=<?php echo $womenstennispro['w_tennispro_id']; ?>">Rank</a>a></td>
         </tr>
       <?php
       } 
