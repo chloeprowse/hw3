@@ -10,7 +10,7 @@
     </thead>
     <tbody>
 <?php
-while ($womenstennispro = $womenstennispros ->fetch_assoc()
+while ($womenstennispro = $w_tennispro ->fetch_assoc()
 ?>
   <tr>
     <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
