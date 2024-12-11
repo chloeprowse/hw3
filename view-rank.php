@@ -1,22 +1,22 @@
-<h1>Womens Tennis Pros</h1>
+<h1>Women's Tennis Ranks</h1>
 <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Country</th>
+        <th>Number</th>
+        <th>Points</th>
       </tr>
     </thead>
     <tbody>
       <?php
 
-      while ($womenstennispro = $womenstennispros->fetch_assoc()) { 
+      while ($rank = $rank->fetch_assoc()) { 
       ?>
         <tr>
-          <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
-          <td><?php echo $womenstennispro['w_tennispro_name']; ?></td>
-          <td><?php echo $womenstennispro['country']; ?></td>
+          <td><?php echo $rank['rank_id']; ?></td>
+          <td><?php echo $rank['rank_number']; ?></td>
+          <td><?php echo $rank['total_points']; ?></td>
         </tr>
       <?php
       } 
