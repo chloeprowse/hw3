@@ -28,6 +28,9 @@
         <li class="nav-item">
           <a class="nav-link" href="wtennispros-with-tourney.php">Womens Tennis Pros Tourney</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="tennisball.php">Tennis Balls</a>
+        </li>
       </ul>
     </div>
   </div>
