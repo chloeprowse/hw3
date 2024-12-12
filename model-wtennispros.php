@@ -26,7 +26,7 @@ function selectwomenstennispros() {
 
         // Step 2: Insert into rank table
         $stmt2 = $conn->prepare("INSERT INTO `rank` (`rank_number`, `total_points`) VALUES (?, ?);");
-        $stmt2->bind_param("ii", $ranknum, $totalpoints);
+        $stmt2->bind_param("ss", $ranknum, $totalpoints);
         $stmt2->execute();
         $rid = $conn->insert_id; // Get the generated rank_id
 
