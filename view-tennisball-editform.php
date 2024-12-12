@@ -28,7 +28,7 @@
             <label for="wid<?php echo $tennisballs['tennisball_id']; ?>" class="form-label">Womens Pro ID</label>
             <input type="text" class="form-control" id="wid<?php echo $tennisballs['tennisball_id']; ?>" name="tbcolor" value="<?php echo $tennisballs['w_tennispro_id']; ?>">
           </div>
-          <input type="hidden" name="rid" value="<?php echo $tennisballs['tennisball_id']; ?>">
+          <input type="hidden" name="tid" value="<?php echo $tennisballs['tennisball_id']; ?>">
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
