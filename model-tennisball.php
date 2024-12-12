@@ -29,7 +29,7 @@ function updatetennisball($tbbrand, $tbcolor, $wid, $tid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("update `tennisball` set `tb_brand` = ?, `tb_color` = ?, `w_tennispro_id` = ? where tennisball_id = ?");
-        $stmt->bind_param("ssii", $tbbrand, $tbcolor, $wid, $tid);
+        $stmt->bind_param("sss", $tbbrand, $tbcolor, $wid, $tid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
