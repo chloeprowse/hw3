@@ -16,7 +16,7 @@
         }
 
         .content {
-            background-color: rgba(f, f, f, f, f, 0.7); 
+            background-color: rgba(f, f, f, f, f, 0.2); 
             padding: 20px;
             border-radius: 8px;
             margin: 20px auto;
