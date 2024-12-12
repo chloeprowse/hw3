@@ -25,10 +25,6 @@
     <label for="tbcolor" class="form-label">Tennis Ball Color</label>
     <input type="text" class="form-control" id="tbcolor" name="tbcolor">
   </div>
-  <div class="mb-3">
-    <label for="wid" class="form-label">Womens Pro ID</label>
-    <input type="text" class="form-control" id="wid" name="wid">
-  </div>
   <input type="hidden" name="actionType" value="Add">
   <button type="submit" class="btn btn-primary">Save</button>
 </form>
