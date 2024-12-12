@@ -28,12 +28,12 @@ function selecttourneybywtennispro($wid) {
         throw $e;
     }
 }
-function inserttourneybywtennispro($tourneyName, $country, $rank, $totalpoints, $day, $rid, $wid) {
+function inserttourneybywtennispro($tourneyName, $country, $rank, $totalpoints, $day, $rid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `tourney` (`tourney_name`, `country`, `rank_number`, `total_points`, `day_time`, `r.rank_id`,  `w_tennispro_id`) 
+        $stmt = $conn->prepare("INSERT INTO `tourney` (`tourney_name`, `country`, `rank_number`, `total_points`, `day_time`, `r.rank_id`) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssii", $tourneyName, $country, $rank, $totalpoints, $day, $rid, $wid,);
+        $stmt->bind_param("sssssi", $tourneyName, $country, $rank, $totalpoints, $day, $rid);
         $stmt->execute();
         $success = $stmt->affected_rows > 0;
         $stmt->close();
