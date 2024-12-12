@@ -44,33 +44,17 @@ function selectwomenstennispros() {
         throw $e;
     }
 }
-
-function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
+function updatewomenstennispros($wid, $name, $country, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
     try {
         $conn = get_db_connection();
-        $conn->begin_transaction();
-
-    
-        $stmtGetWid = $conn->prepare("SELECT `w_tennispro_id` FROM `w_tennispro` WHERE `w_tennispro_name` = ? LIMIT 1");
-        $stmtGetWid->bind_param("s", $name);
-        $stmtGetWid->execute();
-        $stmtGetWid->bind_result($wid);
-        $stmtGetWid->fetch();
-        $stmtGetWid->close();
-
-        if (!$wid) {
-            throw new Exception("No `w_tennispro_id` found for player name: $name");
-        }
-
-        echo "Retrieved w_tennispro_id: $wid\n";
+        $conn->begin_transaction(); 
 
        
-        $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `country` = ? WHERE `w_tennispro_id` = ?");
-        $stmt1->bind_param("si", $country, $wid);
+        $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `w_tennispro_name` = ?, `country` = ? WHERE `w_tennispro_id` = ?");
+        $stmt1->bind_param("ssi", $name, $country, $wid);
         $stmt1->execute();
-        echo "Updated w_tennispro for ID: $wid\n";
 
-        
+     
         $stmtGetTid = $conn->prepare("SELECT `tourney_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1");
         $stmtGetTid->bind_param("i", $wid);
         $stmtGetTid->execute();
@@ -82,35 +66,34 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
             throw new Exception("No `tourney_id` found for `w_tennispro_id`: $wid");
         }
 
-        echo "Retrieved tourney_id: $tid\n";
-
+        
         $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `tourney_id` = ?");
         $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $tid);
         $stmt2->execute();
-        echo "Updated tourney for ID: $tid\n";
 
-        
+       
         $stmt3 = $conn->prepare("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
         $stmt3->bind_param("iii", $ranknum, $totalpoints, $wid);
         $stmt3->execute();
-        echo "Updated rank for w_tennispro_id: $wid\n";
 
         $conn->commit();
 
+ 
         $stmt1->close();
         $stmt2->close();
         $stmt3->close();
         $conn->close();
 
-        return true;
+        return true; 
     } catch (Exception $e) {
         if (isset($conn) && $conn) {
             $conn->rollback();
             $conn->close();
         }
-        throw $e;
+        throw $e; 
     }
 }
+
 
 
 
