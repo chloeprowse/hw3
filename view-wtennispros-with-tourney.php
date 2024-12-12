@@ -1,13 +1,5 @@
-<div class="row"
-  <div class="col">
 <h1>Womens Tennis Pros Tournaments</h1>
- </div>
-  <div class="col-auto">
-    <?php
-include "view-wtennispros-with-tourney-newform.php"
-?>
-</div>
-</div>
+
 <div class="table-responsive">
   <table class="table">
     <thead>
