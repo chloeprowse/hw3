@@ -29,6 +29,7 @@ if (isset($_POST['actionType'])) {
       }
       break;
   }
+}
 $tennisball = selecttennisball ();
 include "view-tennisball.php";
 include "view-footer.php";
