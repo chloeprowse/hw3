@@ -6,7 +6,7 @@
         <th>ID</th>
         <th>Brand</th>
         <th>Color</th>
-        <th></th>   
+        <th>Womens Pro ID</th>   
       </tr>
     </thead>
     <tbody>
@@ -18,6 +18,7 @@
           <td><?php echo $tennisballs['tennisball_id']; ?></td>
           <td><?php echo $tennisballs['tb_brand']; ?></td>
           <td><?php echo $tennisballs['tb_color']; ?></td>
+          <td><?php echo $tennisballs['w_tennispro_id']; ?></td>
         </tr>
       <?php
       } 
