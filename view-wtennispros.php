@@ -15,6 +15,11 @@ include "view-wtennispros-newform.php"
         <th>ID</th>
         <th>Name</th>
         <th>Country</th>
+        <th>Rank Number</th>   
+        <th>Total Points</th>
+        <th>Tournament Name</th>
+        <th>Tournament Country</th>
+        <th>Day/Time</th>
         <th></th>   
         <th></th>
         <th></th>
@@ -26,9 +31,15 @@ include "view-wtennispros-newform.php"
       while ($womenstennispro = $womenstennispros->fetch_assoc()) { 
       ?>
         <tr>
-          <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
-          <td><?php echo $womenstennispro['w_tennispro_name']; ?></td>
-          <td><?php echo $womenstennispro['country']; ?></td>
+          <td><?php echo $womenstennispro['w.w_tennispro_id']; ?></td>
+          <td><?php echo $womenstennispro['w.w_tennispro_name']; ?></td>
+          <td><?php echo $womenstennispro['w.country']; ?></td>
+          <td><?php echo $womenstennispro['r.rank_number']; ?></td>
+          <td><?php echo $womenstennispro['r.total_points']; ?></td>
+          <td><?php echo $womenstennispro['t.tourney_name']; ?></td>
+          <td><?php echo $womenstennispro['t.country']; ?></td>
+          <td><?php echo $womenstennispro['t.day_time']; ?></td>
+          
           <td><a href="tourney-by-wtennispro.php?id=<?php echo $womenstennispro['w_tennispro_id']; ?>">Tournamnets</a></td>
           <td> 
           <?php
