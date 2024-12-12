@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link active" aria-current="page" href="/"><img src="https://th.bing.com/th/id/R.21eafaf0b870d9fd299ebd2da8a03977?rik=wOzB8D%2fEVam5Zg&pid=ImgRaw&r=0" alt="A tennis ball" style="width: 50px; height: auto; border: none; border-radius: 10px;"></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="wtennispros.php">Womens Tennis Pros</a>
