@@ -17,7 +17,7 @@ function selectwomenstennispros() {
 function selecttourneybywtennispro($wid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT r.rank_id, rank_number, total_points, tourney_name, country, day_time FROM `rank` r join tourney t on t.rank_id = r.rank_id where t.w_tennispro_id=?");
+        $stmt = $conn->prepare("SELECT r.rank_id, r.rank_number, r.total_points, tourney_name, country, day_time FROM `rank` r join tourney t on t.rank_id = r.rank_id where t.w_tennispro_id=?");
         $stmt->bind_param("i", $wid);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -31,7 +31,7 @@ function selecttourneybywtennispro($wid) {
 function inserttourneybywtennispro($tourneyName, $country, $rank, $totalpoints, $day, $rid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `tourney` (`tourney_name`, `country`, `rank_number`, `total_points`, `day_time`, `r.rank_id`) 
+        $stmt = $conn->prepare("INSERT INTO `tourney` (`tourney_name`, `country`, `r.rank_number`, `r.total_points`, `day_time`, `r.rank_id`) 
                                 VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssi", $tourneyName, $country, $rank, $totalpoints, $day, $rid);
         $stmt->execute();
