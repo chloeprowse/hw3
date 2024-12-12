@@ -4,7 +4,7 @@
  </div>
   <div class="col-auto">
     <?php
-include "view-wtennispros-newform.php"
+include "view-wtennispros-with-tourney-newform.php"
 ?>
 </div>
 </div>
