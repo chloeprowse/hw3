@@ -44,7 +44,7 @@ function selectwomenstennispros() {
         throw $e;
     }
 }
-function updatewomenstennispros($wid, $name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $day) {
+function updatewomenstennispros($wid, $name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $daytime) {
     try {
         $conn = get_db_connection();
         $conn->begin_transaction(); 
