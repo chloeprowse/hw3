@@ -1,6 +1,10 @@
 <div class="row"
   <div class="col">
-<h1>Who's your favorite player?</h1>
+<h1>Who's your favorite player?</h1> <?php
+$imagePath = "https://photoshop-kopona.com/uploads/posts/2019-03/1552279287_tennis-5.jpg";
+?>
+<img src="<?php echo $imagePath; ?>" alt="A tennis ball">
+
   </div>
   <div class="col-auto">
     <?php
