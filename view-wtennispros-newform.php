@@ -26,8 +26,24 @@
     <input type="text" class="form-control" id="country" name="country">
   </div>
  <div class="mb-3">
-    <label for="country" class="form-label">Country</label>
-    <input type="text" class="form-control" id="country" name="country">
+    <label for="ranknum" class="form-label">Rank Number</label>
+    <input type="text" class="form-control" id="ranknum" name="ranknum">
+  </div>
+  <div class="mb-3">
+    <label for="totalpoints" class="form-label">Total Points</label>
+    <input type="text" class="form-control" id="totalpoints" name="totalpoints">
+  </div>
+  <div class="mb-3">
+    <label for="tourneyname" class="form-label">Tournament Name</label>
+    <input type="text" class="form-control" id="tourneyname" name="tourneyname">
+  </div>
+  <div class="mb-3">
+    <label for="tcountry" class="form-label">Country for Tournament</label>
+    <input type="text" class="form-control" id="tcountry" name="tcountry">
+  </div>
+ <div class="mb-3">
+    <label for="daytime" class="form-label">Day/Time</label>
+    <input type="text" class="form-control" id="daytime" name="daytime">
   </div>
   <input type="hidden" name="actionType" value="Add">
   <button type="submit" class="btn btn-primary">Save</button>
