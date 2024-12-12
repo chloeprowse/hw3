@@ -39,7 +39,7 @@ function updatewomenstennispros($name, $country, $wid) {
         throw $e;
     }
 }
-function deletetennisball($wid) {
+function deletewomenstennispros($wid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("delete from `w_tennispro` where w_tennispro_id=?");
