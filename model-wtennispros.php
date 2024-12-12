@@ -45,7 +45,7 @@ function selectwomenstennispros() {
     }
 }
 
-function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
+function updatewomenstennispros($name, $country, $wid, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
     try {
         $conn = get_db_connection();
         $conn->begin_transaction(); 
@@ -53,34 +53,35 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
       
         $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `w_tennispro_name` = ?, `country` = ? WHERE `w_tennispro_id` = ?");
         $stmt1->bind_param("ssi", $name, $country, $wid);
+        $stmt1->execute();
 
-        if (!$stmt1->execute()) {
-            throw new Exception("Failed to update `w_tennispro`: " . $stmt1->error);
-        }
+        
+        $stmtGetTid = $conn->prepare("SELECT `tourney_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1");
+        $stmtGetTid->bind_param("i", $wid);
+        $stmtGetTid->execute();
+        $stmtGetTid->bind_result($tid);
+        $stmtGetTid->fetch();
+        $stmtGetTid->close();
 
-        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ?, WHERE `w_tennispro_id` = ?");
-        $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $wid);
+       
+        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `tourney_id` = ?");
+        $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $tid);
+        $stmt2->execute();
 
-        if (!$stmt2->execute()) {
-            throw new Exception("Failed to update `tourney`: " . $stmt2->error);
-        }
-
+ 
         $stmt3 = $conn->prepare("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
         $stmt3->bind_param("iii", $ranknum, $totalpoints, $wid);
+        $stmt3->execute();
 
-        if (!$stmt3->execute()) {
-            throw new Exception("Failed to update `rank`: " . $stmt3->error);
-        }
+        $conn->commit(); 
 
-        $conn->commit();
-
-      
+        
         $stmt1->close();
         $stmt2->close();
         $stmt3->close();
         $conn->close();
 
-        return true;
+        return true; 
     } catch (Exception $e) {
         // Rollback on error
         if (isset($conn) && $conn) {
@@ -90,6 +91,8 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
         throw $e; 
     }
 }
+
+
 
 function deletewomenstennispros($wid) {
     try {
