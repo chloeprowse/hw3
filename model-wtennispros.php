@@ -18,19 +18,19 @@ function selectwomenstennispros() {
         $conn = get_db_connection();
         $conn->begin_transaction(); 
 
-        // Step 1: Insert into w_tennispro table
+        
         $stmt1 = $conn->prepare("INSERT INTO `w_tennispro` (`w_tennispro_name`, `country`) VALUES (?, ?);");
         $stmt1->bind_param("ss", $name, $country);
         $stmt1->execute();
         $wid = $conn->insert_id; 
 
-        // Step 2: Insert into rank table
+       
         $stmt2 = $conn->prepare("INSERT INTO `rank` (`rank_number`, `total_points`) VALUES (?, ?);");
         $stmt2->bind_param("ii", $ranknum, $totalpoints);
         $stmt2->execute();
         $rid = $conn->insert_id; 
 
-        // Step 3: Insert into tourney table
+      
         $stmt3 = $conn->prepare("INSERT INTO `tourney` (`w_tennispro_id`, `rank_id`, `tourney_name`, `country`, `day_time`) VALUES (?, ?, ?, ?, ?);");
         $stmt3->bind_param("iisss", $wid, $rid, $tourneyname, $tcountry, $daytime);
         $stmt3->execute();
