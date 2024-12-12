@@ -12,10 +12,8 @@ include "view-favoriteplayer-newform.php"
   <table class="table">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Brand</th>
-        <th>Color</th>
-        <th>Womens Pro ID</th>  
+        <th>Name</th>
+        <th>Favorite Player</th>
           <th></th>
           <th></th>
           <th></th>
@@ -24,12 +22,12 @@ include "view-favoriteplayer-newform.php"
     <tbody>
       <?php
 
-      while ($favoriteplayers = $favoriteplayer->fetch_assoc()) { 
+      while ($favoriteplayer = $favoriteplayers->fetch_assoc()) { 
       ?>
         <tr>
-          <td><?php echo $favoriteplayers['favoriteplayer_id']; ?></td>
-          <td><?php echo $favoriteplayers['name']; ?></td>
-          <td><?php echo $favoriteplayers['favoriteplayer']; ?></td>
+          <td><?php echo $favoriteplayer['favoriteplayer_id']; ?></td>
+          <td><?php echo $favoriteplayer['name']; ?></td>
+          <td><?php echo $favoriteplayer['favoriteplayer']; ?></td>
     
            <td>
           <?php
@@ -38,7 +36,7 @@ include "view-favoriteplayer-newform.php"
           </td>
           <td>
             <form method="post" action="">
-              <input type="hidden" name="tid" value="<?php echo $favoriteplayers['favoriteplayer_id']; ?>">
+              <input type="hidden" name="tid" value="<?php echo $favoriteplayer['favoriteplayer_id']; ?>">
               <input type="hidden" name="actionType" value="Delete">
               <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
