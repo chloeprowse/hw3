@@ -12,7 +12,7 @@
       <?php while ($womenstennispro = $womenstennispros->fetch_assoc()) { ?>
         <div class="card-group">
           <div class="card">
-            <?php include "view-wtennispros-with-tourney-editform.php"; ?>
+
             <div class="card-body">
               <h5 class="card-title"><?php echo $womenstennispro['w_tennispro_name']; ?></h5>
               <p class="card-text">
