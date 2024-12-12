@@ -14,7 +14,7 @@ if (isset($_POST['actionType'])) {
       }
       break;
     case "Edit":
-      if (updatewomenstennispros($_POST['name'], $_POST['country'], $_POST['ranknum'], $_POST['totalpoints'], $_POST['tourneyname'], $_POST['tcountry'], $_POST['daytime'], $_POST['wid'])) {
+      if (updatewomenstennispros($_POST['name'], $_POST['country'], $_POST['ranknum'], $_POST['totalpoints'], $_POST['tourneyname'], $_POST['tcountry'], $_POST['daytime'])) {
         echo '<div class="alert alert-success" role="alert">Womens Tennis Pro edited.</div>';
       } else {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
