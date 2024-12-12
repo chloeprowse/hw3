@@ -18,16 +18,16 @@
       <div class="modal-body">
      <form method="post" action="">
   <div class="mb-3">
-    <label for="$tourneyName" class="form-label">Tournament Name</label>
+    <label for="tourneyName" class="form-label">Tournament Name</label>
     <input type="text" class="form-control" id="tourneyName" name="tourneyName">
   </div>
   <div class="mb-3">
-    <label for="$country" class="form-label">Country</label>
+    <label for="country" class="form-label">Country</label>
     <input type="text" class="form-control" id="country" name="country">
   </div>
   <div class="mb-3">
-    <label for="$rank" class="form-label">Womens Pro ID</label>
-    <input type="text" class="form-control" id="wid" name="wid">
+    <label for="rank" class="form-label">Womens Pro ID</label>
+    <input type="text" class="form-control" id="rank" name="rank">
   </div>
   <input type="hidden" name="actionType" value="Add">
   <button type="submit" class="btn btn-primary">Save</button>
