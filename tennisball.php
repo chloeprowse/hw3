@@ -15,7 +15,7 @@ if (isset($_POST['actionType'])) {
       }
       break;
     case "Edit":
-      if (updatetennisball($_POST['tbbrand'], $_POST['tbcolor'], $_POST['wid'])) {
+      if (updatetennisball($_POST['tbbrand'], $_POST['tbcolor'], $_POST['wid'], $_POST['tid'])) {
         echo '<div class="alert alert-success" role="alert">Tennis Ball edited.</div>';
       } else {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
@@ -30,7 +30,7 @@ if (isset($_POST['actionType'])) {
       break;
   }
 }
-$tennisball = selecttennisball ();
+$tennisball = selecttennisball();
 include "view-tennisball.php";
 include "view-footer.php";
 ?>
