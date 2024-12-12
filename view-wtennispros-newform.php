@@ -25,6 +25,10 @@
     <label for="country" class="form-label">Country</label>
     <input type="text" class="form-control" id="country" name="country">
   </div>
+ <div class="mb-3">
+    <label for="country" class="form-label">Country</label>
+    <input type="text" class="form-control" id="country" name="country">
+  </div>
   <input type="hidden" name="actionType" value="Add">
   <button type="submit" class="btn btn-primary">Save</button>
 </form>
