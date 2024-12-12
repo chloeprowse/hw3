@@ -12,7 +12,7 @@ function selecttennisball() {
         throw $e;
     }
 }
-function inserttennisball($tbbrand,$tbcolor,$wid) {
+function inserttennisball($tbbrand, $tbcolor, $wid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("INSERT INTO `tennisball` (`tb_brand`, `tb_color`,`w_tennispro_id`) VALUES (?, ?, ?);");
@@ -25,10 +25,10 @@ function inserttennisball($tbbrand,$tbcolor,$wid) {
         throw $e;
     }
 }
-function updatetennisball($tbbrand,$tbcolor,$wid,$tid) {
+function updatetennisball($tbbrand, $tbcolor, $wid, $tid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("update `tennisball` set `tb_brand` = ?, `tb_color` = ?, `w_tennispro_id` = ? where rank_id = ?");
+        $stmt = $conn->prepare("update `tennisball` set `tb_brand` = ?, `tb_color` = ?, `w_tennispro_id` = ? where tennisball_id = ?");
         $stmt->bind_param("ssii", $tbbrand, $tbcolor, $wid, $tid);
         $success = $stmt->execute();
         $conn->close();
