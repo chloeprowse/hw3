@@ -41,7 +41,7 @@ function updaterank($rnumber,$rtotalpoints, $rid) {
 function deleterank($rid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("delete from rank where rank_id=?");
+        $stmt = $conn->prepare("delete from `rank` where rank_id=?");
         $stmt->bind_param("i", $rid);
         $success = $stmt->execute();
         $conn->close();
