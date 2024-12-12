@@ -15,6 +15,13 @@ if (isset($_POST['actionType'])) {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
       }
       break;
+    case "Edit":
+      if (updaterank($_POST['rnumber'], $_POST['rtotalpoints'], $_POST['rid'])) {
+        echo '<div class="alert alert-success" role="alert">Rank edited.</div>';
+      } else {
+        echo '<div class="alert alert-danger" role="alert">Error.</div>';
+      }
+      break;
     case "Delete":
       if (deleterank($_POST['rid'])) {
         echo '<div class="alert alert-success" role="alert">Rank deleted.</div>';
