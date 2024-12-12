@@ -44,6 +44,10 @@
           <label for="daytime<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Day/Time</label>
           <input type="text" class="form-control" id="daytime<?php echo $womenstennispro['w_tennispro_id']; ?>" name="daytime" value="<?php echo $womenstennispro['day_time']; ?>">
         </div>
+        <div class="mb-3">
+          <label for="tid<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Tournament ID</label>
+          <input type="text" class="form-control" id="tid<?php echo $womenstennispro['w_tennispro_id']; ?>" name="tid" value="<?php echo $womenstennispro['tourney_id']; ?>">
+        </div>
           <input type="hidden" name="wid" value="<?php echo $womenstennispro['w_tennispro_id']; ?>">
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Save</button>
