@@ -1,7 +1,13 @@
 <?php
-$pageTitle = "Home<img src="https://th.bing.com/th/id/R.21eafaf0b870d9fd299ebd2da8a03977?rik=wOzB8D%2fEVam5Zg&pid=ImgRaw&r=0" alt="A tennis ball" style="width: 200px; height: auto; border: 0px solid black; border-radius: 10px;">";
+$pageTitle = "Home";
 include "view-header.php";
 ?>
+<div style="display: flex; align-items: center;">
+    <h1 style="margin-right: 10px;">Home</h1>
+    <img src="https://th.bing.com/th/id/R.21eafaf0b870d9fd299ebd2da8a03977?rik=wOzB8D%2fEVam5Zg&pid=ImgRaw&r=0" 
+         alt="A tennis ball" 
+         style="width: 50px; height: auto; border: 0px solid black; border-radius: 10px;">
+</div>
 <h1>Who doesn't love tennis?</h1>
 
 <!-- Add a photo -->
