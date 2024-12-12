@@ -9,14 +9,14 @@
             background-image: url('https://wallpaperboat.com/wp-content/uploads/2021/04/17/75359/tennis-ball-07.jpg');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Keeps the background fixed during scrolling */
+            background-attachment: fixed; 
             margin: 0;
             padding: 0;
             color: #fff; /* Makes text white for better contrast */
         }
 
         .content {
-            background-color: rgba(0, 0, 0, 0.7); /* Adds a semi-transparent black background for readability */
+            background-color: rgba(0, 0, 0, 0.7); 
             padding: 20px;
             border-radius: 8px;
             margin: 20px auto;
@@ -29,8 +29,8 @@
         }
 
         table {
-            background-color: #fff;
-            color: #000;
+            background-color: #000;
+            color: #fff;
             border-radius: 8px;
             overflow: hidden;
         }
