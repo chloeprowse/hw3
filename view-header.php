@@ -31,6 +31,10 @@
         <li class="nav-item">
           <a class="nav-link" href="tennisball.php">Tennis Balls</a>
         </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="favoriteplayer.php">Favorite Player</a>
+        </li>
       </ul>
     </div>
   </div>
