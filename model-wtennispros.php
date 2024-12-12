@@ -30,7 +30,7 @@ function updatewomenstennispros($name, $country, $wid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("update `w_tennispro` set `w_tennispro_name` = ?, `country` = ? where w_tennispro_id = ?");
-        $stmt->bind_param("ssi", $tbbrand, $tbcolor, $wid);
+        $stmt->bind_param("ssi", $name, $country, $wid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
