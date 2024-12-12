@@ -2,7 +2,6 @@
 $pageTitle = "Home";
 include "view-header.php";
 
-// Handle form submissions
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
@@ -18,12 +17,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo "Error: " . $e->getMessage();
     }
 
-    // Redirect to prevent form resubmission
     header("Location: {$_SERVER['PHP_SELF']}");
     exit;
 }
-
-// Fetch all persons and their favorite tennis players
 $persons = selectAllPersons();
 ?>
 <h1>Who doesn't love tennis?</h1>
