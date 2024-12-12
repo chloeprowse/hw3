@@ -2,7 +2,7 @@
 function selectwomenstennispros() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT w.w_tennispro_id w.w_tennispro_name, w.country, r.rank_number, r.total_points, t.tourney_name, t.country, t.day_time FROM `w_tennispro` w join `tourney`t on w.w_tennispro_id=t.w_tennispro_id join `rank` r on t.rank_id=r.rank_id ");
+        $stmt = $conn->prepare("SELECT w.w_tennispro_id, w.w_tennispro_name, w.country, r.rank_number, r.total_points, t.tourney_name, t.country, t.day_time FROM `w_tennispro` w join `tourney`t on w.w_tennispro_id=t.w_tennispro_id join `rank` r on t.rank_id=r.rank_id ");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
