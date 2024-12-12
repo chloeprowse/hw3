@@ -28,7 +28,7 @@ function insertfavoriteplayer($name, $player) {
 function updatefavoriteplayer($name, $player, $fid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("update `favoriteplayer` set `name` = ?, `player` = ? where favoriteplayer_id = ?");
+        $stmt = $conn->prepare("update `favoriteplayer` set `name` = ?, `favoriteplayer` = ? where favoriteplayer_id = ?");
         $stmt->bind_param("ssi", $name, $player, $fid);
         $success = $stmt->execute();
         $conn->close();
