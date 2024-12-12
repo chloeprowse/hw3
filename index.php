@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Home";
+$pageTitle = "Home<img src="https://th.bing.com/th/id/R.21eafaf0b870d9fd299ebd2da8a03977?rik=wOzB8D%2fEVam5Zg&pid=ImgRaw&r=0" alt="A tennis ball" style="width: 200px; height: auto; border: 0px solid black; border-radius: 10px;">";
 include "view-header.php";
 ?>
 <h1>Who doesn't love tennis?</h1>
