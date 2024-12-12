@@ -25,11 +25,11 @@ function inserttennisball($tbbrand, $tbcolor, $wid) {
         throw $e;
     }
 }
-function updatetennisball($tbbrand, $tbcolor, $wid, $tid) {
+function updatetennisball($tbbrand, $tbcolor, $tid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("update `tennisball` set `tb_brand` = ?, `tb_color` = ?, `w_tennispro_id` = ? where tennisball_id = ?");
-        $stmt->bind_param("sssi", $tbbrand, $tbcolor, $wid, $tid);
+        $stmt = $conn->prepare("update `tennisball` set `tb_brand` = ?, `tb_color` = ? where tennisball_id = ?");
+        $stmt->bind_param("ssi", $tbbrand, $tbcolor, $tid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
