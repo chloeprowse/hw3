@@ -1,3 +1,5 @@
+<div class="row"
+  <div class="col">
 <h1>Womens Tennis Pros</h1>
 <div class="table-responsive">
   <table class="table">
