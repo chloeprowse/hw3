@@ -50,7 +50,7 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
         $conn = get_db_connection();
         $conn->begin_transaction();
 
-        // Step 1: Retrieve `w_tennispro_id` dynamically using the player's name
+    
         $stmtGetWid = $conn->prepare("SELECT `w_tennispro_id` FROM `w_tennispro` WHERE `w_tennispro_name` = ? LIMIT 1");
         $stmtGetWid->bind_param("s", $name);
         $stmtGetWid->execute();
@@ -62,12 +62,15 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
             throw new Exception("No `w_tennispro_id` found for player name: $name");
         }
 
-        // Step 2: Update w_tennispro table
+        echo "Retrieved w_tennispro_id: $wid\n";
+
+       
         $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `country` = ? WHERE `w_tennispro_id` = ?");
         $stmt1->bind_param("si", $country, $wid);
         $stmt1->execute();
+        echo "Updated w_tennispro for ID: $wid\n";
 
-        // Step 3: Dynamically retrieve `tourney_id`
+        
         $stmtGetTid = $conn->prepare("SELECT `tourney_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1");
         $stmtGetTid->bind_param("i", $wid);
         $stmtGetTid->execute();
@@ -79,20 +82,21 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
             throw new Exception("No `tourney_id` found for `w_tennispro_id`: $wid");
         }
 
-        // Step 4: Update tourney table
+        echo "Retrieved tourney_id: $tid\n";
+
         $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `tourney_id` = ?");
         $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $tid);
         $stmt2->execute();
+        echo "Updated tourney for ID: $tid\n";
 
-        // Step 5: Update rank table
+        
         $stmt3 = $conn->prepare("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
         $stmt3->bind_param("iii", $ranknum, $totalpoints, $wid);
         $stmt3->execute();
+        echo "Updated rank for w_tennispro_id: $wid\n";
 
-        // Commit the transaction
         $conn->commit();
 
-        // Close statements and connection
         $stmt1->close();
         $stmt2->close();
         $stmt3->close();
@@ -107,6 +111,7 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
         throw $e;
     }
 }
+
 
 
 
