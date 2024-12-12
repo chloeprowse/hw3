@@ -24,6 +24,7 @@
             <label for="rtotalpoints<?php echo $ranks['rank_id']; ?>" class="form-label">Total Points</label>
             <input type="text" class="form-control" id="rtotalpoints<?php echo $ranks['rank_id']; ?>" name="rtotalpoints" value="<?php echo $ranks['total_points']; ?>">
           </div>
+  
           <input type="hidden" name="rid" value="<?php echo $ranks['rank_id']; ?>">
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Save</button>
