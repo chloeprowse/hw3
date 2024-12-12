@@ -43,6 +43,9 @@ include "view-rank-newform.php"
               </button>
             </form>
           </td>
+          <?php
+          include "view-rank-editform.php"
+          ?>
           <td>
           <form method="post" action="tourney-by-rank.php">
               <input type="hidden" name="rid" value="<?php echo $ranks['rank_id']; ?>">
