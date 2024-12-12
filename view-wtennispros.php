@@ -20,7 +20,7 @@ include "view-wtennispros-newform.php"
         <th>Tournament Name</th>
         <th>Tournament Country</th>
         <th>Day/Time</th>
-        <th>Tournament ID</th>
+        
         <th></th>   
         <th></th>
         <th></th>
@@ -40,7 +40,7 @@ include "view-wtennispros-newform.php"
           <td><?php echo $womenstennispro['tourney_name']; ?></td>
           <td><?php echo $womenstennispro['country']; ?></td>
           <td><?php echo $womenstennispro['day_time']; ?></td>
-          <td><?php echo $womenstennispro['tourney_id']; ?></td>
+        
           
           <td><a href="tourney-by-wtennispro.php?id=<?php echo $womenstennispro['w_tennispro_id']; ?>">Tournamnets</a></td>
           <td> 
