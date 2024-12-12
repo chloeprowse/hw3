@@ -18,13 +18,13 @@
         <form method="post" action="">
           <div class="mb-3">
             <label for="name<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name<?php echo $womenstennispro['w_tennispro_id']; ?>" name="name" value="<?php echo $womenstennispro['w_tennispro']; ?>">
+            <input type="text" class="form-control" id="name<?php echo $womenstennispro['w_tennispro_id']; ?>" name="name" value="<?php echo $womenstennispro['w_tennispro_name']; ?>">
           </div>
           <div class="mb-3">
-            <label for="tbcolor<?php echo $tennisballs['tennisball_id']; ?>" class="form-label">Tennis Ball Color</label>
-            <input type="text" class="form-control" id="tbcolor<?php echo $tennisballs['tennisball_id']; ?>" name="tbcolor" value="<?php echo $tennisballs['tb_color']; ?>">
+            <label for="country<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Country</label>
+            <input type="text" class="form-control" id="country<?php echo $womenstennispro['w_tennispro_id']; ?>" name="country" value="<?php echo $womenstennispro['country']; ?>">
           </div>
-          <input type="hidden" name="tid" value="<?php echo $tennisballs['tennisball_id']; ?>">
+          <input type="hidden" name="wid" value="<?php echo $womenstennispro['w_tennispro_id']; ?>">
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Save</button>
         </form>
