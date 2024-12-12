@@ -7,7 +7,7 @@ include "view-header.php";
 if (isset($_POST['actionType'])) {
   switch ($_POST['actionType']) { 
     case "Add":
-      if (inserttourneybywtennispro($_POST['name'], $_POST['country'])) {
+      if (inserttourneybywtennispro($_POST['tourneyName'], $_POST['country'], $_POST['rank'], $_POST['totalpoints'], $_POST['day'], $_POST['rid'])) {
         echo '<div class="alert alert-success" role="alert">Womens Tennis Pro added.</div>';
       } else {
         echo '<div class="alert alert-danger" role="alert">Error.</div>';
