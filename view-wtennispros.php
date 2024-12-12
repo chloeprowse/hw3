@@ -31,14 +31,14 @@ include "view-wtennispros-newform.php"
       while ($womenstennispro = $womenstennispros->fetch_assoc()) { 
       ?>
         <tr>
-          <td><?php echo $womenstennispro['w.w_tennispro_id']; ?></td>
-          <td><?php echo $womenstennispro['w.w_tennispro_name']; ?></td>
-          <td><?php echo $womenstennispro['w.country']; ?></td>
-          <td><?php echo $womenstennispro['r.rank_number']; ?></td>
-          <td><?php echo $womenstennispro['r.total_points']; ?></td>
-          <td><?php echo $womenstennispro['t.tourney_name']; ?></td>
-          <td><?php echo $womenstennispro['t.country']; ?></td>
-          <td><?php echo $womenstennispro['t.day_time']; ?></td>
+          <td><?php echo $womenstennispro['w_tennispro_id']; ?></td>
+          <td><?php echo $womenstennispro['w_tennispro_name']; ?></td>
+          <td><?php echo $womenstennispro['country']; ?></td>
+          <td><?php echo $womenstennispro['rank_number']; ?></td>
+          <td><?php echo $womenstennispro['total_points']; ?></td>
+          <td><?php echo $womenstennispro['tourney_name']; ?></td>
+          <td><?php echo $womenstennispro['country']; ?></td>
+          <td><?php echo $womenstennispro['day_time']; ?></td>
           
           <td><a href="tourney-by-wtennispro.php?id=<?php echo $womenstennispro['w_tennispro_id']; ?>">Tournamnets</a></td>
           <td> 
