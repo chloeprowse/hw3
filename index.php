@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header("Location: {$_SERVER['PHP_SELF']}");
     exit;
 }
-$persons = selectAllPersons();
+$persons = selectPerson();
 ?>
 <h1>Who doesn't love tennis?</h1>
 
