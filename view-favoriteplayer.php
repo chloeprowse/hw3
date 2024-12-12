@@ -1,9 +1,7 @@
 <div class="row"
   <div class="col">
-<h1>Who's your favorite player?</h1> <?php
-$imagePath = "https://photoshop-kopona.com/uploads/posts/2019-03/1552279287_tennis-5.jpg";
-?>
-<img src="<?php echo $imagePath; ?>" alt="A tennis ball">
+<h1>Who's your favorite player?</h1> <img src="https://clipartix.com/wp-content/uploads/2016/05/Tennis-ball-clip-art-free-vector-in-open-office-drawing-svg-svg.jpg" alt="A tennis ball" style="width: 200px; height: auto; border: 2px solid black; border-radius: 10px;">
+
 
   </div>
   <div class="col-auto">
