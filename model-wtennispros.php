@@ -45,8 +45,6 @@ function selectwomenstennispros() {
     }
 }
 
-}
-
 
 function updateWomenTennisPros($name, $country, $wid, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
     try {
