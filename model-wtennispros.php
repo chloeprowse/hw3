@@ -16,7 +16,7 @@ function selectwomenstennispros() {
     function insertwomenstennispros($name, $country) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `w_tennispro` (`w_tennispro_name`, `country`) VALUES (?, ?, ?);");
+        $stmt = $conn->prepare("INSERT INTO `w_tennispro` (`w_tennispro_name`, `country`) VALUES (?, ?);");
         $stmt->bind_param("sss", $name, $country);
         $success = $stmt->execute();
         $conn->close();
