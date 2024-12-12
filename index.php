@@ -1,6 +1,7 @@
 <?php
 $pageTitle = "Home";
 include "view-header.php";
+require_once("includes/model-persons.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
