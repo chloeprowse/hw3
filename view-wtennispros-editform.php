@@ -23,7 +23,27 @@
           <div class="mb-3">
             <label for="country<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Country</label>
             <input type="text" class="form-control" id="country<?php echo $womenstennispro['w_tennispro_id']; ?>" name="country" value="<?php echo $womenstennispro['country']; ?>">
-          </div>
+         </div>
+            <div class="mb-3">
+          <label for="ranknum<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Rank Number</label>
+          <input type="text" class="form-control" id="ranknum<?php echo $womenstennispro['w_tennispro_id']; ?>" name="ranknum" value="<?php echo $womenstennispro['rank_number']; ?>">
+        </div>
+        <div class="mb-3">
+          <label for="totalpoints<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Total Points</label>
+          <input type="text" class="form-control" id="totalpoints<?php echo $womenstennispro['w_tennispro_id']; ?>" name="totalpoints" value="<?php echo $womenstennispro['total_points']; ?>">
+        </div>
+        <div class="mb-3">
+          <label for="tourneyname<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Tournament Name</label>
+          <input type="text" class="form-control" id="tourneyname<?php echo $womenstennispro['w_tennispro_id']; ?>" name="tourneyname" value="<?php echo $womenstennispro['tourney_name']; ?>">
+        </div>
+        <div class="mb-3">
+          <label for="tcountry<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Country for Tournament</label>
+          <input type="text" class="form-control" id="tcountry<?php echo $womenstennispro['w_tennispro_id']; ?>" name="tcountry" value="<?php echo $womenstennispro['country']; ?>">
+        </div>
+       <div class="mb-3">
+          <label for="daytime<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Day/Time</label>
+          <input type="text" class="form-control" id="daytime<?php echo $womenstennispro['w_tennispro_id']; ?>" name="daytime" value="<?php echo $womenstennispro['day_time']; ?>">
+        </div>
           <input type="hidden" name="wid" value="<?php echo $womenstennispro['w_tennispro_id']; ?>">
           <input type="hidden" name="actionType" value="Edit">
           <button type="submit" class="btn btn-primary">Save</button>
