@@ -57,7 +57,7 @@ function updatewomenstennispros($name, $country, $wid, $tourneyname, $tcountry, 
         $stmt1->execute();
 
         $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `w_tennispro_id` = ? AND `tourney_id` = ?");
-        $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $wid, $tid);
+        $stmt2->bind_param("sssii", $tourneyname, $tcountry, $daytime, $wid, $tid);
         $stmt2->execute();
 
         $stmt3 = $conn->prepare ("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
