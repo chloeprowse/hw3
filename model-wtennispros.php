@@ -13,7 +13,7 @@ function selectwomenstennispros() {
     }
 }
         
- function insertwomentennispros($name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $daytime) {
+ function insertwomenstennispros($name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $daytime) {
     try {
         $conn = get_db_connection();
         $conn->begin_transaction(); // Start transaction
@@ -46,7 +46,7 @@ function selectwomenstennispros() {
 }
 
 
-function updatewomentennispros($name, $country, $wid, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
+function updatewomenstennispros($name, $country, $wid, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
     try {
         $conn = get_db_connection();
         $conn->begin_transaction(); // Start transaction
@@ -83,7 +83,7 @@ function updatewomentennispros($name, $country, $wid, $tourneyname, $tcountry, $
         throw $e; // Re-throw the exception for the caller
     }
 }
-function deletewomentennispros($wid) {
+function deletewomenstennispros($wid) {
     try {
         $conn = get_db_connection();
         $conn->begin_transaction(); 
