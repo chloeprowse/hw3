@@ -10,12 +10,14 @@ function selectwomenstennispros() {
     } catch (Exception $e) {
         $conn->close();
         throw $e;
+    }
+}
         
-    function inserttennisball($tbbrand, $tbcolor, $wid) {
+    function insertwomenstennispros($name, $country) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("INSERT INTO `tennisball` (`tb_brand`, `tb_color`,`w_tennispro_id`) VALUES (?, ?, ?);");
-        $stmt->bind_param("sss", $tbbrand, $tbcolor, $wid);
+        $stmt = $conn->prepare("INSERT INTO `w_tennispro` (`w_tennispro_name`, `country`) VALUES (?, ?, ?);");
+        $stmt->bind_param("sss", $name, $country);
         $success = $stmt->execute();
         $conn->close();
         return $success;
@@ -24,11 +26,11 @@ function selectwomenstennispros() {
         throw $e;
     }
 }
-function updatetennisball($tbbrand, $tbcolor, $tid) {
+function updatewomenstennispros($name, $country, $wid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("update `tennisball` set `tb_brand` = ?, `tb_color` = ? where tennisball_id = ?");
-        $stmt->bind_param("ssi", $tbbrand, $tbcolor, $tid);
+        $stmt = $conn->prepare("update `w_tennispro` set `w_tennispro_name` = ?, `country` = ? where w_tennispro_id = ?");
+        $stmt->bind_param("ssi", $tbbrand, $tbcolor, $wid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
@@ -37,11 +39,11 @@ function updatetennisball($tbbrand, $tbcolor, $tid) {
         throw $e;
     }
 }
-function deletetennisball($tid) {
+function deletetennisball($wid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("delete from `tennisball` where tennisball_id=?");
-        $stmt->bind_param("i", $tid);
+        $stmt = $conn->prepare("delete from `w_tennispro` where w_tennispro_id=?");
+        $stmt->bind_param("i", $wid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
