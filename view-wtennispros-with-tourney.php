@@ -21,7 +21,9 @@ include "view-wtennispros-with-tourney-newform.php"
       ?>
        <div class="card-group">
   <div class="card">
-    
+     <?php
+          include "view-wtennispros-with-tourney-editform.php"
+          ?>
     <div class="card-body">
       <h5 class="card-title"><?php echo $womenstennispro['w_tennispro_name']; ?></h5>
       <p class="card-text">
@@ -33,6 +35,7 @@ include "view-wtennispros-with-tourney-newform.php"
           <li class="list-group-item"><?php echo $tourney['rank_number']; ?> - <?php echo $tourney['total_points']; ?> - <?php echo $tourney['tourney_name']; ?> - <?php echo $tourney['country']; ?> - <?php echo $tourney['day_time']; ?></li>
         
         <?php
+          
         }
         ?>
       </ul>
