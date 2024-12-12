@@ -1,3 +1,7 @@
+<div style="background-image: url('https://wallpaperboat.com/wp-content/uploads/2021/04/17/75359/tennis-ball-07.jpg'); background-size: cover; background-position: center; height: 500px;">
+  
+</div>
+
 <div class="row"
   <div class="col">
 <h1>Tennis Balls Used</h1>
