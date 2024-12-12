@@ -56,7 +56,7 @@ function updateWomenTennisPros($name, $country, $wid, $tourneyname, $tcountry, $
         $stmt1->bind_param("ssi", $name, $country, $wid);
         $stmt1->execute();
 
-        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `w_tennispro_id` = ?" AND `tourney_id` = ?");
+        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `w_tennispro_id` = ? AND `tourney_id` = ?");
         $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $wid, $tid);
         $stmt2->execute();
 
