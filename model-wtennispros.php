@@ -58,8 +58,8 @@ function updatewomenstennispros($name, $country, $tourneyname, $tcountry, $dayti
             throw new Exception("Failed to update `w_tennispro`: " . $stmt1->error);
         }
 
-        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ?, WHERE `w_tennispro_id` = ? AND `tourney_id` = ?");
-        $stmt2->bind_param("sssii", $tourneyname, $tcountry, $daytime, $wid, $tid);
+        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ?, WHERE `w_tennispro_id` = ?");
+        $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $wid);
 
         if (!$stmt2->execute()) {
             throw new Exception("Failed to update `tourney`: " . $stmt2->error);
