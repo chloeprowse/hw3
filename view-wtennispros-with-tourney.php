@@ -1,4 +1,6 @@
- <h1>Womens Tennis Pros Tournaments</h1>
+<div class="row"
+  <div class="col">
+<h1>Womens Tennis Pros Tournaments</h1>
 
 <div class="table-responsive">
   <table class="table">
