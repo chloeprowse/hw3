@@ -38,11 +38,11 @@ function updatetennisball($tbbrand, $tbcolor, $wid, $tid) {
         throw $e;
     }
 }
-function deletetennisball($rid) {
+function deletetennisball($tid) {
     try {
         $conn = get_db_connection();
         $stmt = $conn->prepare("delete from `tennisball` where tennisball_id=?");
-        $stmt->bind_param("i", $rid);
+        $stmt->bind_param("i", $tid);
         $success = $stmt->execute();
         $conn->close();
         return $success;
