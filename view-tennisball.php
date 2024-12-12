@@ -6,13 +6,13 @@
     <title>Tennis Balls Used</title>
     <style>
         body {
-            background-image: url('https://wallpaperboat.com/wp-content/uploads/2021/04/17/75359/tennis-ball-07.jpg');
+            background-image: url('https://images2.minutemediacdn.com/image/upload/images/voltaxMediaLibrary/mmsport/mentalfloss/01g8eb89gkdfskwka63y');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
             margin: 0;
             padding: 0;
-            color: #fff; /* Makes text white for better contrast */
+            color: #fff;
         }
 
         .content {
@@ -29,8 +29,8 @@
         }
 
         table {
-            background-color: #000;
-            color: #fff;
+            background-color: #fff;
+            color: #000;
             border-radius: 8px;
             overflow: hidden;
         }
