@@ -16,73 +16,81 @@ function selectwomenstennispros() {
  function insertwomenstennispros($name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $daytime) {
     try {
         $conn = get_db_connection();
-        $conn->begin_transaction(); // Start transaction
+        $conn->begin_transaction(); 
 
         // Step 1: Insert into w_tennispro table
         $stmt1 = $conn->prepare("INSERT INTO `w_tennispro` (`w_tennispro_name`, `country`) VALUES (?, ?);");
         $stmt1->bind_param("ss", $name, $country);
         $stmt1->execute();
-        $wid = $conn->insert_id; // Get the generated w_tennispro_id
+        $wid = $conn->insert_id; 
 
         // Step 2: Insert into rank table
         $stmt2 = $conn->prepare("INSERT INTO `rank` (`rank_number`, `total_points`) VALUES (?, ?);");
         $stmt2->bind_param("ii", $ranknum, $totalpoints);
         $stmt2->execute();
-        $rid = $conn->insert_id; // Get the generated rank_id
+        $rid = $conn->insert_id; 
 
         // Step 3: Insert into tourney table
         $stmt3 = $conn->prepare("INSERT INTO `tourney` (`w_tennispro_id`, `rank_id`, `tourney_name`, `country`, `day_time`) VALUES (?, ?, ?, ?, ?);");
         $stmt3->bind_param("iisss", $wid, $rid, $tourneyname, $tcountry, $daytime);
         $stmt3->execute();
 
-        $conn->commit(); // Commit transaction
+        $conn->commit(); 
         $conn->close();
         return true;
     } catch (Exception $e) {
-        $conn->rollback(); // Rollback transaction on error
+        $conn->rollback(); 
         $conn->close();
         throw $e;
     }
 }
 
-
-function updatewomenstennispros($name, $country, $wid, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints) {
+function updatewomenstennispros($name, $country, $wid, $tourneyname, $tcountry, $daytime, $ranknum, $totalpoints, $tid) {
     try {
         $conn = get_db_connection();
-        $conn->begin_transaction(); // Start transaction
+        $conn->begin_transaction(); 
 
-        // Step 1: Update w_tennispro table
+      
         $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `w_tennispro_name` = ?, `country` = ? WHERE `w_tennispro_id` = ?");
         $stmt1->bind_param("ssi", $name, $country, $wid);
-        $stmt1->execute();
+
+        if (!$stmt1->execute()) {
+            throw new Exception("Failed to update `w_tennispro`: " . $stmt1->error);
+        }
 
         $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `w_tennispro_id` = ? AND `tourney_id` = ?");
         $stmt2->bind_param("sssii", $tourneyname, $tcountry, $daytime, $wid, $tid);
-        $stmt2->execute();
 
-        $stmt3 = $conn->prepare ("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
+        if (!$stmt2->execute()) {
+            throw new Exception("Failed to update `tourney`: " . $stmt2->error);
+        }
+
+        $stmt3 = $conn->prepare("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
         $stmt3->bind_param("iii", $ranknum, $totalpoints, $wid);
-        $stmt3->execute();
 
-        // Commit the transaction
+        if (!$stmt3->execute()) {
+            throw new Exception("Failed to update `rank`: " . $stmt3->error);
+        }
+
         $conn->commit();
-        
-        // Close the connection
+
+      
         $stmt1->close();
         $stmt2->close();
         $stmt3->close();
         $conn->close();
 
-        return true; // Return success
+        return true;
     } catch (Exception $e) {
         // Rollback on error
         if (isset($conn) && $conn) {
             $conn->rollback();
             $conn->close();
         }
-        throw $e; // Re-throw the exception for the caller
+        throw $e; 
     }
 }
+
 function deletewomenstennispros($wid) {
     try {
         $conn = get_db_connection();
