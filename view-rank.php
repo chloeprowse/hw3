@@ -49,7 +49,7 @@ include "view-rank-newform.php"
           <td>
           <form method="post" action="tourney-by-rank.php">
               <input type="hidden" name="rid" value="<?php echo $ranks['rank_id']; ?>">
-              <button type="submit" class="btn btn-primary">Tournaments</button>
+              <button type="submit" class="btn btn-primary" style="background-color: #FF69B4; border-color: #FF69B4;">Tournaments</button>
             </form>
           </td>
         </tr>
