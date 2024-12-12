@@ -30,7 +30,7 @@ if (isset($_POST['actionType'])) {
       break;
   }
 }
-$tennisball = selectfavoriteplayer();
+$favoriteplayer = selectfavoriteplayer();
 include "view-favoriteplayer.php";
 include "view-footer.php";
 ?>
