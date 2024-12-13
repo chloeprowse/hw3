@@ -16,7 +16,7 @@
         }
 
          .content {
-            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+            background-color: rgba(255, 255, 255, 0.0); /* White with 80% opacity */
             padding: 20px;
             border-radius: 8px;
             margin: 20px auto;
