@@ -32,7 +32,6 @@ if (!function_exists('selectfavoriteplayer')) {
     }
 }
 
-<?php
 if (!function_exists('insertfavoriteplayer')) {
     function insertfavoriteplayer($name, $player) {
         try {
