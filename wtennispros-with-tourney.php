@@ -7,6 +7,6 @@ include "view-header.php";
 
 
 $womenstennispros = selectwomenstennispros ();
-include "view-wtennispros-with-tourney.php";
-include "view-footer.php";
+include "view/wtennispros-with-tourney.php";
+include "view/footer.php";
 ?>
