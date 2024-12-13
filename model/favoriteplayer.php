@@ -85,7 +85,8 @@ if (!function_exists('insertfavoriteplayer')) {
         }
     }
 }
-
+?>
+<?php 
 if (!function_exists('updatefavoriteplayer')) {
     function updatefavoriteplayer($name, $player, $fid) {
         try {
@@ -103,7 +104,8 @@ if (!function_exists('updatefavoriteplayer')) {
         }
     }
 }
-
+?>
+<?php
 if (!function_exists('deletefavoriteplayer')) {
     function deletefavoriteplayer($fid) {
         try {
