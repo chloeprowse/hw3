@@ -6,7 +6,7 @@
   </div>
   <div class="col-auto">
     <?php
-include "view-favoriteplayer-newform.php"
+include "view/favoriteplayer-newform.php"
 ?>
 </div>
 </div>
@@ -33,7 +33,7 @@ include "view-favoriteplayer-newform.php"
     
            <td>
           <?php
-          include "view-favoriteplayer-editform.php"
+          include "view/favoriteplayer-editform.php"
           ?>
           </td>
           <td>
