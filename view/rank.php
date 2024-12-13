@@ -109,10 +109,10 @@
 <!-- Include Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-  // Prepare the data for the chart
+ 
   const rankNumbers = [
     <?php
-    $rank->data_seek(0); // Reset pointer to loop again
+    $rank->data_seek(0); 
     while ($r = $rank->fetch_assoc()) {
         echo $r['rank_number'] . ", ";
     }
@@ -121,7 +121,7 @@
 
   const totalPoints = [
     <?php
-    $rank->data_seek(0); // Reset pointer
+    $rank->data_seek(0); 
     while ($r = $rank->fetch_assoc()) {
         echo $r['total_points'] . ", ";
     }
@@ -130,7 +130,7 @@
 
   const ctx = document.getElementById('rankChart').getContext('2d');
   const rankChart = new Chart(ctx, {
-    type: 'bar', // You can change this to 'line', 'pie', etc.
+    type: 'bar', 
     data: {
       labels: rankNumbers,
       datasets: [{
