@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women's Tennis Pros</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,7 +44,10 @@
 <div class="content">
     <div class="row">
         <div class="col">
-            <h1>Women's Tennis Pros<img src="https://www.creativefabrica.com/wp-content/uploads/2022/01/20/Tennis-Player-Vector-Young-And-Healthy-Graphics-23800328-1.jpg" alt="A tennis ball" style="width: 200px; height: auto; border: 0px solid black; border-radius: 10px;"</h1>
+            <h1>Women's Tennis Pros
+                <img src="https://www.creativefabrica.com/wp-content/uploads/2022/01/20/Tennis-Player-Vector-Young-And-Healthy-Graphics-23800328-1.jpg" 
+                     alt="A tennis ball" style="width: 200px; height: auto; border: 0px solid black; border-radius: 10px;">
+            </h1>
         </div>
         <div class="col-auto">
             <?php include "view/wtennispros-newform.php"; ?>
@@ -97,11 +100,11 @@
         </table>
     </div>
 
-    <!-- Chart Container -->
-    <canvas id="tennisProChart"></canvas>
+    <!-- Highcharts Container -->
+    <div id="tennisProChart"></div>
 </div>
 
-<!-- Chart.js Script -->
+<!-- Highcharts Script -->
 <script>
     // Prepare the data for the chart
     const proNames = [
@@ -122,43 +125,34 @@
         ?>
     ];
 
-    // Create the chart
-    const ctx = document.getElementById('tennisProChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: proNames,
-            datasets: [{
-                label: 'Total Points',
-                data: totalPoints,
-                backgroundColor: 'rgba(255, 105, 180, 0.5)', // Light pink
-                borderColor: 'rgba(255, 105, 180, 1)', // Hot pink
-                borderWidth: 1
-            }]
+    // Initialize Highcharts
+    Highcharts.chart('tennisProChart', {
+        chart: {
+            type: 'bar'
         },
-        options: {
-            indexAxis: 'y', // Makes the bar chart horizontal
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top'
-                }
-            },
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Total Points'
-                    }
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: 'Tennis Pros'
-                    }
-                }
+        title: {
+            text: 'Total Points by Tennis Pro'
+        },
+        xAxis: {
+            categories: proNames,
+            title: {
+                text: 'Tennis Pros'
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: 'Total Points'
+            }
+        },
+        series: [{
+            name: 'Total Points',
+            data: totalPoints,
+            color: '#FF69B4' // Hot pink
+        }],
+        tooltip: {
+            formatter: function () {
+                return `<strong>${this.x}</strong><br>Total Points: <strong>${this.y}</strong>`;
             }
         }
     });
