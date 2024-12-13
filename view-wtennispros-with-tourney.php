@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Womens Tennis Pros Tournaments</title>
+    
     <style>
         body {
-            background-image: url('https://www.sport-et-tourisme.fr/wp-content/uploads/2020/03/US-Open-1.jpg');
+            background-image: url('https://static.wixstatic.com/media/72ebd9_06e9e2c7563741788d5ff624a7228be4~mv2.jpg/v1/crop/x_282,y_0,w_636,h_800/fill/w_275,h_346,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/US-Open.jpg');
             background-size: cover;
-            background-position: left;
+            background-position: center;
             background-attachment: fixed; 
             margin: 0;
             padding: 0;
