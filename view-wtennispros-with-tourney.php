@@ -8,7 +8,7 @@
         body {
             background-image: url('https://www.sport-et-tourisme.fr/wp-content/uploads/2020/03/US-Open-1.jpg');
             background-size: cover;
-            background-position: center;
+            background-position: left;
             background-attachment: fixed; 
             margin: 0;
             padding: 0;
