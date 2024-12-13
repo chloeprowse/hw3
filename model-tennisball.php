@@ -38,7 +38,7 @@ function inserttennisball($tbbrand, $tbcolor, $wid) {
         throw $e;
     }
 }
-<?php
+
     
 
 function updatetennisball($tbbrand, $tbcolor, $tid) {
