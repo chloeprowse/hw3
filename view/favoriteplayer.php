@@ -3,6 +3,9 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="row">
   <div class="col">
     <h1>Who's your favorite player? 
@@ -15,7 +18,6 @@
 </div>
 
 <div class="table-responsive">
-  <!-- Add an ID to the table for DataTables initialization -->
   <table id="favoritePlayerTable" class="table">
     <thead>
       <tr>
@@ -55,6 +57,12 @@
   </table>
 </div>
 
+<!-- Doughnut Chart -->
+<div>
+  <h2>Favorite Players Distribution</h2>
+  <canvas id="favoritePlayerChart"></canvas>
+</div>
+
 <!-- Initialize DataTables -->
 <script>
   $(document).ready(function() {
@@ -67,5 +75,52 @@
   });
 </script>
 
+<!-- Initialize Doughnut Chart -->
+<script>
+  $(document).ready(function() {
+    // Prepare data for the chart
+    const labels = [
+      <?php
+      $favoriteplayer->data_seek(0); // Reset pointer to reuse query result
+      while ($row = $favoriteplayer->fetch_assoc()) {
+          echo "'" . $row['name'] . "', ";
+      }
+      ?>
+    ];
+    const data = [
+      <?php
+      $favoriteplayer->data_seek(0); // Reset pointer again
+      while ($row = $favoriteplayer->fetch_assoc()) {
+          echo $row['num_favoriteplayer'] . ", ";
+      }
+      ?>
+    ];
+
+    // Create the chart
+    const ctx = document.getElementById('favoritePlayerChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Favorite Players',
+          data: data,
+          backgroundColor: [
+            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'
+          ],
+          hoverOffset: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          }
+        }
+      }
+    });
+  });
+</script>
 
 
