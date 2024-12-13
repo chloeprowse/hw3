@@ -38,7 +38,7 @@ include "view-wtennispros-newform.php"
           <td><?php echo $womenstennispro['rank_number']; ?></td>
           <td><?php echo $womenstennispro['total_points']; ?></td>
           <td><?php echo $womenstennispro['tourney_name']; ?></td>
-          <td><?php echo $womenstennispro['country']; ?></td>
+          <td><?php echo $womenstennispro['tcountry']; ?></td>
           <td><?php echo $womenstennispro['day_time']; ?></td>
         
           
