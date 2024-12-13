@@ -1,3 +1,4 @@
+
 <div class="row">
   <div class="col">
     <h1>Who's your favorite player? 
@@ -50,16 +51,19 @@
   </table>
 </div>
 
-<!-- Add Chart.js and render chart -->
+<!-- Add Chart -->
 <div>
   <canvas id="favoritePlayerChart"></canvas>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
+  // Debugging: Verify Chart.js is loaded
+  console.log(typeof Chart);
+
   // Prepare data for the chart
   const labels = [
     <?php
-    $favoriteplayer->data_seek(0); // Reset pointer to reuse the query result
+    $favoriteplayer->data_seek(0); // Reset pointer to reuse query result
     while ($row = $favoriteplayer->fetch_assoc()) {
         echo "'" . $row['name'] . "', ";
     }
@@ -73,6 +77,10 @@
     }
     ?>
   ];
+
+  // Debugging: Verify the generated data
+  console.log('Labels:', labels);
+  console.log('Data:', data);
 
   // Create the chart
   const ctx = document.getElementById('favoritePlayerChart').getContext('2d');
@@ -97,4 +105,5 @@
     }
   });
 </script>
+
 
