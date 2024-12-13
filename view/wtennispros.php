@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women's Tennis Pros</title>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css">
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,11 +17,9 @@
             margin: 20px;
         }
 
-        .map-container {
-            height: 500px;
-            margin: 20px 0;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+        #tennisProChart {
+            max-width: 800px;
+            margin: 40px auto;
         }
 
         table {
@@ -54,8 +51,8 @@
         </div>
     </div>
 
-    <!-- Map Container -->
-    <div id="map" class="map-container"></div>
+    <!-- Chart Container -->
+    <canvas id="tennisProChart"></canvas>
 
     <!-- Table Data -->
     <div class="table-responsive">
@@ -104,38 +101,69 @@
     </div>
 </div>
 
-<!-- Initialize Leaflet.js Map -->
+<!-- Chart.js Script -->
 <script>
-    const map = L.map('map').setView([20, 0], 2); // Center map globally
-
-    // Add OpenStreetMap tiles
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
-
-    // Add data points
-    const data = [
+    // Prepare the data for the chart
+    const proNames = [
         <?php
         $womenstennispros->data_seek(0); // Reset pointer
         while ($pro = $womenstennispros->fetch_assoc()) {
-            echo "{ 
-                name: '{$pro['w_tennispro_name']}', 
-                country: '{$pro['country']}', 
-                lat: {$pro['latitude']}, 
-                lng: {$pro['longitude']},
-                tournament: '{$pro['tourney_name']}'
-            },";
+            echo "'" . $pro['w_tennispro_name'] . "', ";
         }
         ?>
     ];
 
-    // Add markers
-    data.forEach(pro => {
-        L.marker([pro.lat, pro.lng])
-            .addTo(map)
-            .bindPopup(`<strong>${pro.name}</strong><br>${pro.country}<br>Tournament: ${pro.tournament}`);
+    const totalPoints = [
+        <?php
+        $womenstennispros->data_seek(0); // Reset pointer
+        while ($pro = $womenstennispros->fetch_assoc()) {
+            echo $pro['total_points'] . ", ";
+        }
+        ?>
+    ];
+
+    // Create the chart
+    const ctx = document.getElementById('tennisProChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar', // Change this to 'horizontalBar' for a horizontal bar chart
+        data: {
+            labels: proNames,
+            datasets: [{
+                label: 'Total Points',
+                data: totalPoints,
+                backgroundColor: 'rgba(255, 105, 180, 0.5)', // Light pink
+                borderColor: 'rgba(255, 105, 180, 1)', // Hot pink
+                borderWidth: 1
+            }]
+        },
+        options: {
+            indexAxis: 'y', // Makes the bar chart horizontal
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Total Points'
+                    }
+                },
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Tennis Pros'
+                    }
+                }
+            }
+        }
     });
 </script>
 </body>
 </html>
+
 
