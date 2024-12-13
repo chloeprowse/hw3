@@ -20,7 +20,7 @@
             <label for="tbbrand<?php echo $tennisballs['tennisball_id']; ?>" class="form-label">Tennis Ball Brand</label>
               <?php
 $tbbrandList = selecttennisballForInput();
-$selectedtbbrand = 0;
+$selectedtbbrand = $tbbrandItem['tb_brand'];
 include "view-tbbrand-input-list.php";
 ?>
           </div>
