@@ -38,7 +38,7 @@
         </div>
         <div class="mb-3">
           <label for="tcountry<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Country for Tournament</label>
-          <input type="text" class="form-control" id="tcountry<?php echo $womenstennispro['w_tennispro_id']; ?>" name="tcountry" value="<?php echo $womenstennispro['country']; ?>">
+          <input type="text" class="form-control" id="tcountry<?php echo $womenstennispro['w_tennispro_id']; ?>" name="tcountry" value="<?php echo $womenstennispro['tcountry']; ?>">
         </div>
        <div class="mb-3">
           <label for="daytime<?php echo $womenstennispro['w_tennispro_id']; ?>" class="form-label">Day/Time</label>
