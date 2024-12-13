@@ -4,7 +4,7 @@
   </div>
   <div class="col-auto">
     <?php
-include "view-wtennispros-newform.php"
+include "view/wtennispros-newform.php"
 ?>
 </div>
 </div>
@@ -45,7 +45,7 @@ include "view-wtennispros-newform.php"
           <td><a href="tourney-by-wtennispro.php?id=<?php echo $womenstennispro['w_tennispro_id']; ?>">Tournamnets</a></td>
           <td> 
           <?php
-          include "view-wtennispros-editform.php"
+          include "view/wtennispros-editform.php"
           ?>
           </td>
           <td>
