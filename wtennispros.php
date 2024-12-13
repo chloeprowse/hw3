@@ -30,6 +30,6 @@ if (isset($_POST['actionType'])) {
   } 
 }
 $womenstennispros = selectwomenstennispros ();
-include "view-wtennispros.php";
-include "view-footer.php";
+include "view/wtennispros.php";
+include "view/footer.php";
 ?>
