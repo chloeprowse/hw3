@@ -19,10 +19,7 @@
           <div class="mb-3">
             <label for="tbbrand<?php echo $tennisballs['tennisball_id']; ?>" class="form-label">Tennis Ball Brand</label>
               <?php
-$tbbrandList = selecttennisballForInput();
-$selectedtbbrand = $tbbrandItem['tennisball_id'];
-include "view-tbbrand-input-list.php";
-?>
+
           </div>
           <div class="mb-3">
             <label for="tbcolor<?php echo $tennisballs['tennisball_id']; ?>" class="form-label">Tennis Ball Color</label>
