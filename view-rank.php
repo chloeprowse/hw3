@@ -15,38 +15,68 @@
             color: #fff;
         }
 
-         .content {
-            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px auto;
-            max-width: 1200px;
-            color: black; /* Ensure text remains visible */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for contrast */
-        }
+         body {
+    background-image: url('https://media.licdn.com/dms/image/D4D12AQFRXzY0ovkzCw/article-cover_image-shrink_720_1280/0/1683518502585?e=2147483647&v=beta&t=PMOGq4Xl-4JfjYwSiJ_-xbFamlvZ0Zfpzfg_eG-juL4');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; 
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
 
+.content {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    max-width: 1200px;
+    color: black;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
-        h1 {
-            text-align: left;
-            margin-bottom: 20px;
-        }
+h1 {
+    text-align: left;
+    margin-bottom: 20px;
+    padding-left: 20px;
+}
 
-        table {
-            background-color: #fff;
-            color: #000;
-            border-radius: 8px;
-            overflow: hidden;
-        }
+table {
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: collapse;
+}
 
-        .btn-primary {
-            background-color: #FF69B4;
-            border-color: #FF69B4;
-        }
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+}
 
-        .btn-primary:hover {
-            background-color: #FF1493;
-            border-color: #FF1493;
-        }
+th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.btn-primary {
+    background-color: #FF69B4;
+    border-color: #FF69B4;
+    padding: 8px 12px;
+    margin: 0 5px;
+    border-radius: 4px;
+}
+
+.btn-primary:hover {
+    background-color: #FF1493;
+    border-color: #FF1493;
+}
+
     </style>
 </head>
 <body>
