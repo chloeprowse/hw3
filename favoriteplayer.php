@@ -41,6 +41,14 @@ include "view/favoriteplayer.php";
 <!-- Add a section for the chart -->
 <div>
   <h1>Favorite Player Distribution</h1>
+  <style>
+    #favoritePlayerChart {
+      max-width: 400px; /* Limit the width */
+      max-height: 300px; /* Limit the height */
+      margin: auto; /* Center the chart */
+      display: block; /* Ensures proper centering */
+    }
+  </style>
   <canvas id="favoritePlayerChart"></canvas>
 </div>
 
@@ -84,6 +92,7 @@ include "view/favoriteplayer.php";
     },
     options: {
       responsive: true,
+      maintainAspectRatio: true, // Keep the aspect ratio
       plugins: {
         legend: {
           position: 'top',
@@ -92,4 +101,5 @@ include "view/favoriteplayer.php";
     }
   });
 </script>
+
 
