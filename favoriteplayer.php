@@ -1,6 +1,6 @@
 <?php
 require_once("util-db.php");
-require_once("model-favoriteplayer.php");
+require_once("model/favoriteplayer.php");
 
 $pageTitle = "Add your favorite tennis player!";
 include "view-header.php";
