@@ -49,7 +49,7 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
         $conn = get_db_connection();
         $conn->begin_transaction();
 
-        // Step 1: Retrieve `wid` dynamically using `name`
+     
         $stmtGetWid = $conn->prepare("SELECT `w_tennispro_id` FROM `w_tennispro` WHERE `w_tennispro_name` = ? LIMIT 1");
         $stmtGetWid->bind_param("s", $name);
         $stmtGetWid->execute();
@@ -61,12 +61,11 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
             throw new Exception("No `w_tennispro_id` found for player name: $name");
         }
 
-        // Step 2: Update `w_tennispro` table
-        $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `country` = ?, `rank_number` = ?, `total_points` = ? WHERE `w_tennispro_id` = ?");
+       
+        $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `country` = ? WHERE `w_tennispro_id` = ?");
         $stmt1->bind_param("siii", $country, $ranknum, $totalpoints, $wid);
         $stmt1->execute();
 
-        // Step 3: Retrieve `tourney_id`
         $stmtGetTid = $conn->prepare("SELECT `tourney_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1");
         $stmtGetTid->bind_param("i", $wid);
         $stmtGetTid->execute();
@@ -78,19 +77,18 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
             throw new Exception("No `tourney_id` found for `w_tennispro_id`: $wid");
         }
 
-        // Step 4: Update `tourney` table
         $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `tourney_id` = ?");
         $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $tid);
         $stmt2->execute();
 
-        // Step 5: Update `rank` table
+        
         $stmt3 = $conn->prepare("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
         $stmt3->bind_param("iii", $ranknum, $totalpoints, $wid);
         $stmt3->execute();
 
         $conn->commit();
 
-        // Close statements and connection
+      
         $stmt1->close();
         $stmt2->close();
         $stmt3->close();
