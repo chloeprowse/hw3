@@ -57,9 +57,7 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
         $stmtGetWid->fetch();
         $stmtGetWid->close();
 
-        if (!$wid) {
-            throw new Exception("No `w_tennispro_id` found for player name: $name");
-        }
+
 
        
         $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `w_tennispro_name` = ?, `country` = ? WHERE `w_tennispro_id` = ?");
