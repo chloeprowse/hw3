@@ -18,7 +18,7 @@ function selectwomenstennispros() {
 function selecttourneybywtennispro($wid) {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT r.rank_id, r.rank_number, r.total_points, t.tourney_name, t.country, t.day_time 
+        $stmt = $conn->prepare("SELECT r.rank_id, r.rank_number, r.total_points, t.tourney_name, t.tcountry, t.day_time 
                                 FROM `rank` r 
                                 JOIN tourney t ON t.rank_id = r.rank_id 
                                 WHERE t.w_tennispro_id = ?");
