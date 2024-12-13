@@ -111,7 +111,7 @@
     <!-- Include D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        // Data preparation
+       
         const data = [
             <?php
             $colors = [];
@@ -125,7 +125,21 @@
             ?>
         ];
 
-        // D3.js Pie Chart
+     
+        const prettyColors = [
+            "#FFB6C1", // Light Pink
+            "#87CEEB", // Sky Blue
+            "#FFD700", // Gold
+            "#90EE90", // Light Green
+            "#FF69B4", // Hot Pink
+            "#FFA07A", // Light Salmon
+            "#20B2AA", // Light Sea Green
+            "#9370DB", // Medium Purple
+            "#FFC0CB", // Pink
+            "#ADD8E6"  // Light Blue
+        ];
+
+      
         const width = 600;
         const height = 400;
         const radius = Math.min(width, height) / 2;
@@ -139,7 +153,7 @@
 
         const color = d3.scaleOrdinal()
             .domain(data.map(d => d.color))
-            .range(d3.schemeCategory10);
+            .range(prettyColors);
 
         const pie = d3.pie()
             .value(d => d.count);
@@ -157,7 +171,6 @@
             .attr('stroke', 'white')
             .style('stroke-width', '2px');
 
-        // Add labels
         svg.selectAll('text')
             .data(pie(data))
             .enter()
