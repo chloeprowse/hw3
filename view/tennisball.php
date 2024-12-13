@@ -34,6 +34,22 @@
             color: #000;
             border-radius: 8px;
             overflow: hidden;
+            width: 100%;
+        }
+
+        table th, table td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #FF69B4;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
         }
 
         .btn-primary {
@@ -51,6 +67,14 @@
             max-width: 600px;
             text-align: center;
         }
+
+        #searchInput {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -63,14 +87,18 @@
                 <?php include "view/tennisball-newform.php"; ?>
             </div>
         </div>
+
+        <!-- Search Input -->
+        <input type="text" id="searchInput" placeholder="Search the table...">
+
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="tennisTable">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Brand</th>
-                        <th>Color</th>
-                        <th>Womens Pro ID</th>
+                        <th data-column="id">ID</th>
+                        <th data-column="brand">Brand</th>
+                        <th data-column="color">Color</th>
+                        <th data-column="proid">Womens Pro ID</th>
                         <th></th>
                         <th></th>
                         <th></th>
@@ -93,7 +121,7 @@
                                     <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 1 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 1 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                         </svg>
                                     </button>
                                 </form>
@@ -111,7 +139,41 @@
     <!-- Include D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-       
+        // Add sorting functionality
+        const headers = document.querySelectorAll('#tennisTable th[data-column]');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const table = document.querySelector('#tennisTable tbody');
+                const rows = Array.from(table.rows);
+                const columnIndex = Array.from(header.parentNode.children).indexOf(header);
+                const isAscending = header.classList.toggle('asc');
+
+                rows.sort((rowA, rowB) => {
+                    const cellA = rowA.cells[columnIndex].innerText;
+                    const cellB = rowB.cells[columnIndex].innerText;
+
+                    return isAscending
+                        ? cellA.localeCompare(cellB, undefined, { numeric: true })
+                        : cellB.localeCompare(cellA, undefined, { numeric: true });
+                });
+
+                rows.forEach(row => table.appendChild(row));
+            });
+        });
+
+        // Add search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', () => {
+            const filter = searchInput.value.toLowerCase();
+            const rows = document.querySelectorAll('#tennisTable tbody tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(filter) ? '' : 'none';
+            });
+        });
+
+        // Existing pie chart code (unchanged)
         const data = [
             <?php
             $colors = [];
@@ -125,25 +187,13 @@
             ?>
         ];
 
-     
         const prettyColors = [
-            "#FFB6C1", // Light Pink
-            "#87CEEB", // Sky Blue
-            "#FFD700", // Gold
-            "#90EE90", // Light Green
-            "#FF69B4", // Hot Pink
-            "#FFA07A", // Light Salmon
-            "#20B2AA", // Light Sea Green
-            "#9370DB", // Medium Purple
-            "#FFC0CB", // Pink
-            "#ADD8E6"  // Light Blue
+            "#FFB6C1", "#87CEEB", "#FFD700", "#90EE90",
+            "#FF69B4", "#FFA07A", "#20B2AA", "#9370DB",
+            "#FFC0CB", "#ADD8E6"
         ];
 
-      
-        const width = 600;
-        const height = 400;
-        const radius = Math.min(width, height) / 2;
-
+        const width = 600, height = 400, radius = Math.min(width, height) / 2;
         const svg = d3.select("#colorDistribution")
             .append("svg")
             .attr("width", width)
@@ -155,12 +205,8 @@
             .domain(data.map(d => d.color))
             .range(prettyColors);
 
-        const pie = d3.pie()
-            .value(d => d.count);
-
-        const arc = d3.arc()
-            .innerRadius(0)
-            .outerRadius(radius);
+        const pie = d3.pie().value(d => d.count);
+        const arc = d3.arc().innerRadius(0).outerRadius(radius);
 
         svg.selectAll('path')
             .data(pie(data))
@@ -183,3 +229,4 @@
     </script>
 </body>
 </html>
+
