@@ -55,7 +55,7 @@
                 <h1>Tennis Balls Used</h1>
             </div>
             <div class="col-auto">
-                <?php include "view-tennisball-newform.php"; ?>
+                <?php include "view/tennisball-newform.php"; ?>
             </div>
         </div>
         <div class="table-responsive">
@@ -79,7 +79,7 @@
                             <td><?php echo $tennisballs['tb_color']; ?></td>
                             <td><?php echo $tennisballs['w_tennispro_id']; ?></td>
                             <td>
-                                <?php include "view-tennisball-editform.php"; ?>
+                                <?php include "view/tennisball-editform.php"; ?>
                             </td>
                             <td>
                                 <form method="post" action="">
