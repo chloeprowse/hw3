@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <title>Womens Tennis Pros Tournamnets</title> 
     <style>
         body {
             background-image: url(https://images.squarespace-cdn.com/content/v1/56200fcee4b02025054662d7/1462218374871-WK15KGQ07AYFJJ0AKADK/the-welcome-blog-US-Open');
