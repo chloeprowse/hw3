@@ -12,7 +12,7 @@
             background-attachment: fixed; 
             margin: 0;
             padding: 0;
-            color: #000;
+            color: #fff;
         }
 
          .content {
