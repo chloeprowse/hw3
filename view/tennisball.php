@@ -15,7 +15,7 @@
             color: #fff;
         }
 
-         .content {
+        .content {
             background-color: rgba(255, 255, 255, 0.0); 
             padding: 20px;
             border-radius: 8px;
@@ -23,7 +23,6 @@
             max-width: 1200px;
             color: black; 
         }
-
 
         h1 {
             text-align: left;
@@ -45,6 +44,12 @@
         .btn-primary:hover {
             background-color: #FF1493;
             border-color: #FF1493;
+        }
+
+        #colorDistribution {
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: center;
         }
     </style>
 </head>
@@ -88,7 +93,7 @@
                                     <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 1 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                         </svg>
                                     </button>
                                 </form>
@@ -98,8 +103,73 @@
                 </tbody>
             </table>
         </div>
+
+        <!-- Pie Chart for Color Distribution -->
+        <div id="colorDistribution"></div>
     </div>
+
+    <!-- Include D3.js -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+        // Data preparation
+        const data = [
+            <?php
+            $colors = [];
+            $tennisball->data_seek(0); // Reset pointer
+            while ($tb = $tennisball->fetch_assoc()) {
+                $colors[$tb['tb_color']] = ($colors[$tb['tb_color']] ?? 0) + 1;
+            }
+            foreach ($colors as $color => $count) {
+                echo "{ color: '$color', count: $count },";
+            }
+            ?>
+        ];
+
+        // D3.js Pie Chart
+        const width = 600;
+        const height = 400;
+        const radius = Math.min(width, height) / 2;
+
+        const svg = d3.select("#colorDistribution")
+            .append("svg")
+            .attr("width", width)
+            .attr("height", height)
+            .append("g")
+            .attr("transform", `translate(${width / 2}, ${height / 2})`);
+
+        const color = d3.scaleOrdinal()
+            .domain(data.map(d => d.color))
+            .range(d3.schemeCategory10);
+
+        const pie = d3.pie()
+            .value(d => d.count);
+
+        const arc = d3.arc()
+            .innerRadius(0)
+            .outerRadius(radius);
+
+        svg.selectAll('path')
+            .data(pie(data))
+            .enter()
+            .append('path')
+            .attr('d', arc)
+            .attr('fill', d => color(d.data.color))
+            .attr('stroke', 'white')
+            .style('stroke-width', '2px');
+
+        // Add labels
+        svg.selectAll('text')
+            .data(pie(data))
+            .enter()
+            .append('text')
+            .text(d => `${d.data.color}: ${d.data.count}`)
+            .attr('transform', d => `translate(${arc.centroid(d)})`)
+            .style('text-anchor', 'middle')
+            .style('font-size', '14px')
+            .style('fill', 'white');
+    </script>
 </body>
 </html>
+
 
 
