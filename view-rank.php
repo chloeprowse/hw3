@@ -6,7 +6,7 @@
     <title>Woemns Tennis Ranks</title>
     <style>
         body {
-            background-image: url('https://media.licdn.com/dms/image/D4D12AQFRXzY0ovkzCw/article-cover_image-shrink_720_1280/0/1683518502585?e=2147483647&v=beta&t=PMOGq4Xl-4JfjYwSiJ_-xbFamlvZ0Zfpzfg_eG-juL4');
+            background-image: url('https://i.pinimg.com/originals/1d/ee/64/1dee6471c82f1f2de1cc8ef8675381a6.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
