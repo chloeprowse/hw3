@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            background-image: url(https://www.surreytenniscourts.com/wp-content/uploads/2019/06/Artificail-Grass-Court-Maintenance-Surrey.jpg);
+            background-image: url('https://oakmeadowcc.com/wp-content/uploads/2013/09/Blue_Tennis_Court-1.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
