@@ -55,7 +55,12 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
         $stmtGetWid->close();
 
         if (!$wid) {
-            throw new Exception("No `w_tennispro_id` found for the given name: $name");
+            // If the name doesn't exist, insert a new player
+            $stmtInsertPlayer = $conn->prepare("INSERT INTO `w_tennispro` (`w_tennispro_name`, `country`) VALUES (?, ?);");
+            $stmtInsertPlayer->bind_param("ss", $name, $country);
+            $stmtInsertPlayer->execute();
+            $wid = $conn->insert_id;
+            $stmtInsertPlayer->close();
         }
 
         $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `w_tennispro_name` = ?, `country` = ? WHERE `w_tennispro_id` = ?");
@@ -143,4 +148,5 @@ function deletewomenstennispros($wid) {
 }
 
 ?>
+
 
