@@ -74,9 +74,16 @@ if (!function_exists('insertfavoriteplayer')) {
             $conn = get_db_connection();
             $stmt = $conn->prepare("INSERT INTO `favoriteplayer` (`name`, `favoriteplayer`) VALUES (?, ?);");
             $stmt->bind_param("ss", $name, $player);
-            $success = $stmt->execute();
-            $conn->close();
-            return $success;
+
+            // Debug query execution
+            if ($stmt->execute()) {
+                $conn->close();
+                return true;
+            } else {
+                echo "Error: " . $stmt->error; // Show error if query fails
+                $conn->close();
+                return false;
+            }
         } catch (Exception $e) {
             if (isset($conn)) {
                 $conn->close();
@@ -93,9 +100,16 @@ if (!function_exists('updatefavoriteplayer')) {
             $conn = get_db_connection();
             $stmt = $conn->prepare("UPDATE `favoriteplayer` SET `name` = ?, `favoriteplayer` = ? WHERE `favoriteplayer_id` = ?");
             $stmt->bind_param("ssi", $name, $player, $fid);
-            $success = $stmt->execute();
-            $conn->close();
-            return $success;
+
+            // Debug query execution
+            if ($stmt->execute()) {
+                $conn->close();
+                return true;
+            } else {
+                echo "Error: " . $stmt->error; // Show error if query fails
+                $conn->close();
+                return false;
+            }
         } catch (Exception $e) {
             if (isset($conn)) {
                 $conn->close();
