@@ -1,4 +1,4 @@
-<h1>Favorite Player Chart></h1>
+<h1>Favorite Player Chart</h1>
 <div>
   <canvas id="myChart"></canvas>
 </div>
