@@ -27,7 +27,7 @@ if (!function_exists('selectfavoriteplayer')) {
             }
             throw $e;
         } finally {
-       \
+       
             if (isset($conn)) {
                 $conn->close();
             }
