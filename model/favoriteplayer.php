@@ -9,7 +9,6 @@ if (!function_exists('selectfavoriteplayer')) {
             $stmt = $conn->prepare("
                 SELECT favoriteplayer_id, name, favoriteplayer 
                 FROM `favoriteplayer`
-                GROUP BY favoriteplayer
             ");
 
             // Execute the query
