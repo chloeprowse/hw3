@@ -59,7 +59,7 @@
 
 <!-- Doughnut Chart -->
 <div>
-  <h2>Favorite Players Distribution</h2>
+  
   <canvas id="favoritePlayerChart"></canvas>
 </div>
 
