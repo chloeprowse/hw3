@@ -56,7 +56,7 @@
   </div>
   <div class="col-auto">
 <?php
-include "view-rank-newform.php"
+include "view/rank-newform.php"
 ?>
   </div>
 </div>
@@ -83,7 +83,7 @@ include "view-rank-newform.php"
           <td><?php echo $ranks['total_points']; ?></td>
           <td> 
           <?php
-          include "view-rank-editform.php"
+          include "view/rank-editform.php"
           ?>
           </td>
           <td>
