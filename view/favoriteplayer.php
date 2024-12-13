@@ -83,7 +83,7 @@
       <?php
       $favoriteplayer->data_seek(0); // Reset pointer to reuse query result
       while ($row = $favoriteplayer->fetch_assoc()) {
-          echo "'" . $row['name'] . "', ";
+          echo "'" . $row['favoriteplayer'] . "', ";
       }
       ?>
     ];
