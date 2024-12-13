@@ -45,14 +45,18 @@ include "view/favoriteplayer.php";
     #favoritePlayerChart {
       width: 400px;  /* Set fixed width */
       height: 300px; /* Set fixed height */
-      margin: center;  /* Center the chart */
+      margin: auto;  /* Center the chart */
       display: block; /* Ensures proper centering */
+      z-index: 1; /* Ensure buttons are clickable */
     }
   </style>
   <canvas id="favoritePlayerChart" width="400" height="300"></canvas>
 </div>
 
 <?php include "view/footer.php"; ?>
+
+<!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Include Chart.js -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -99,6 +103,11 @@ include "view/favoriteplayer.php";
         }
       }
     }
+  });
+
+  // Ensure buttons work
+  $(document).on('click', '.btn', function (event) {
+    console.log('Button clicked:', event.target);
   });
 </script>
 
