@@ -1,6 +1,6 @@
 <?php
 require_once("util-db.php");
-require_once("model-tourney-by-wtennispro.php");
+require_once("model/tourney-by-wtennispro.php");
 
 $pageTitle = "Womens Tennis Tournamets";
 include "view-header.php";
