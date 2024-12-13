@@ -40,7 +40,7 @@ include "view/favoriteplayer.php";
 
 <!-- Add a section for the chart -->
 <div>
-  
+  <h1>Favorite Player Distribution</h1>
   <canvas id="favoritePlayerChart"></canvas>
 </div>
 
