@@ -22,6 +22,7 @@
     <?php
 $tbbrandList = selecttennisballForInput();
 include "view-tbbrand-input-list.php";
+$selectedttbrand =0
 ?>
   </div>
   <div class="mb-3">
