@@ -106,7 +106,7 @@
 
 <!-- Highcharts Script -->
 <script>
-    // Prepare the data for the chart
+    
     const proNames = [
         <?php
         $womenstennispros->data_seek(0); // Reset pointer
@@ -118,14 +118,14 @@
 
     const totalPoints = [
         <?php
-        $womenstennispros->data_seek(0); // Reset pointer
+        $womenstennispros->data_seek(0); 
         while ($pro = $womenstennispros->fetch_assoc()) {
             echo $pro['total_points'] . ", ";
         }
         ?>
     ];
 
-    // Initialize Highcharts
+
     Highcharts.chart('tennisProChart', {
         chart: {
             type: 'bar'
