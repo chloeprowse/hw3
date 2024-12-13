@@ -50,7 +50,7 @@
     </style>
 </head>
 <body>
-  <div class="row"
+  <div class="row">
   <div class="col">  
 <h1>Women's Tennis Ranks</h1>
   </div>
