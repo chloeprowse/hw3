@@ -1,4 +1,4 @@
-<select class="form-select" id="tbbrand" name="tbbrand">
+<select class="form-select" id="tid" name="tid">
   <?php
 while ($tbbrandItem = $tbbrandList->fetch_assoc()) {
 ?>
