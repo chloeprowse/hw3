@@ -22,9 +22,9 @@
 
     labels: [
         <?php
-      $favorite
+      $favoriteplayer = selectfavoriteplayer();
       while ($favoriteplayers = $favoriteplayer->fetch_assoc()) { 
-         echo $favoriteplayers['num_favoriteplayer'] . ", ";
+         echo "'" . $favoriteplayers['name'] . "', ";
       }
       ?>
     ]
