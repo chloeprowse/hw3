@@ -149,7 +149,7 @@
             .attr("width", width)
             .attr("height", height)
             .append("g")
-            .attr("transform", translate(${width / 2}, ${height / 2}));
+            .attr("transform", `translate(${width / 2}, ${height / 2})`);
 
         const color = d3.scaleOrdinal()
             .domain(data.map(d => d.color))
@@ -175,11 +175,11 @@
             .data(pie(data))
             .enter()
             .append('text')
-            .text(d => ${d.data.color}: ${d.data.count})
-            .attr('transform', d => translate(${arc.centroid(d)}))
+            .text(d => `${d.data.color}: ${d.data.count}`)
+            .attr('transform', d => `translate(${arc.centroid(d)})`)
             .style('text-anchor', 'middle')
             .style('font-size', '14px')
             .style('fill', 'white');
     </script>
 </body>
-</html> 
+</html>
