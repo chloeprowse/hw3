@@ -7,7 +7,7 @@ if (!function_exists('selectfavoriteplayer')) {
 
             // Prepare the SQL query
             $stmt = $conn->prepare("
-                SELECT favoriteplayer_id, name, COUNT(*)favoriteplayer AS num_favoriteplayer
+                SELECT favoriteplayer_id, name, favoriteplayer 
                 FROM `favoriteplayer`
                 GROUP BY favoriteplayer
             ");
