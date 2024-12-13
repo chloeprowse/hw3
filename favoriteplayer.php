@@ -43,8 +43,8 @@ include "view/favoriteplayer.php";
   <h1>Favorite Player Distribution</h1>
   <style>
     #favoritePlayerChart {
-      max-width: 400px; /* Limit the width */
-      max-height: 300px; /* Limit the height */
+      max-width: 100px; /* Limit the width */
+      max-height: 200px; /* Limit the height */
       margin: auto; /* Center the chart */
       display: block; /* Ensures proper centering */
     }
