@@ -31,6 +31,13 @@ if (isset($_POST['actionType'])) {
   }
 }
 
+// Debug POST data for button actions
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  echo "<pre>";
+  print_r($_POST);
+  echo "</pre>";
+}
+
 // Fetch data for table and chart
 $favoriteplayer = selectfavoriteplayer();
 $favoriteplayerChart = selectfavoriteplayerChart();
@@ -47,7 +54,7 @@ include "view/favoriteplayer.php";
       height: 300px; /* Set fixed height */
       margin: auto;  /* Center the chart */
       display: block; /* Ensures proper centering */
-      z-index: 1; /* Ensure buttons are clickable */
+      pointer-events: none; /* Ensure clicks pass through the chart */
     }
   </style>
   <canvas id="favoritePlayerChart" width="400" height="300"></canvas>
@@ -105,11 +112,10 @@ include "view/favoriteplayer.php";
     }
   });
 
-  // Ensure buttons work
+  // Debugging: Ensure buttons work
   $(document).on('click', '.btn', function (event) {
     console.log('Button clicked:', event.target);
   });
 </script>
-
 
 
