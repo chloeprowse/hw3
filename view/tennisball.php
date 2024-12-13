@@ -115,7 +115,7 @@
         const data = [
             <?php
             $colors = [];
-            $tennisball->data_seek(0); // Reset pointer
+            $tennisball->data_seek(0); 
             while ($tb = $tennisball->fetch_assoc()) {
                 $colors[$tb['tb_color']] = ($colors[$tb['tb_color']] ?? 0) + 1;
             }
