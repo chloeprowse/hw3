@@ -21,7 +21,7 @@
             border-radius: 8px;
             margin: 20px auto;
             max-width: 1200px;
-            color: white; 
+            color: black; 
         }
 
 
