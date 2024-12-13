@@ -50,7 +50,7 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
         $conn->begin_transaction();
 
      
-        $stmtGetWid = $conn->prepare("SELECT `w_tennispro_id` FROM `w_tennispro` WHERE `w_tennispro_name` = ? LIMIT 1");
+        $stmtGetWid = $conn->prepare("SELECT `w_tennispro_id` FROM `w_tennispro` WHERE `w_tennispro_name` = ?");
         $stmtGetWid->bind_param("s", $name);
         $stmtGetWid->execute();
         $stmtGetWid->bind_result($wid);
