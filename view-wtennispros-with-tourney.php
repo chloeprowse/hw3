@@ -23,7 +23,7 @@
                       <?php echo $tourney['rank_number'] . ' - ' . 
                                  $tourney['total_points'] . ' - ' . 
                                  $tourney['tourney_name'] . ' - ' . 
-                                 $tourney['country'] . ' - ' . 
+                                 $tourney['tcountry'] . ' - ' . 
                                  $tourney['day_time']; ?>
                       
                     </li>
