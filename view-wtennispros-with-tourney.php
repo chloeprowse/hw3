@@ -6,7 +6,7 @@
     
     <style>
         body {
-            background-image: url('https://static.wixstatic.com/media/72ebd9_06e9e2c7563741788d5ff624a7228be4~mv2.jpg/v1/crop/x_282,y_0,w_636,h_800/fill/w_275,h_346,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/US-Open.jpg');
+            background-image: url(https://images.squarespace-cdn.com/content/v1/56200fcee4b02025054662d7/1462218374871-WK15KGQ07AYFJJ0AKADK/the-welcome-blog-US-Open');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
@@ -27,7 +27,7 @@
 
 
         h1 {
-            text-align: center;
+            text-align: left;
             margin-bottom: 20px;
         }
 
