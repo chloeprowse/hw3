@@ -12,6 +12,19 @@ function selecttennisball() {
         throw $e;
     }
 }
+function selecttennisballForInput() {
+    try {
+        $conn = get_db_connection();
+        $stmt = $conn->prepare("SELECT tennisball_id, tb_brand FROM `tennisball` order by tb_brand");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $conn->close();
+        return $result;
+    } catch (Exception $e) {
+        $conn->close();
+        throw $e;
+    }
+}
 function inserttennisball($tbbrand, $tbcolor, $wid) {
     try {
         $conn = get_db_connection();
@@ -25,6 +38,9 @@ function inserttennisball($tbbrand, $tbcolor, $wid) {
         throw $e;
     }
 }
+<?php
+    
+
 function updatetennisball($tbbrand, $tbcolor, $tid) {
     try {
         $conn = get_db_connection();
