@@ -18,8 +18,7 @@
         <form method="post" action="">
           <div class="mb-3">
             <label for="tbbrand<?php echo $tennisballs['tennisball_id']; ?>" class="form-label">Tennis Ball Brand</label>
-              <?php
-
+            <input type="text" class="form-control" id="tbbrand<?php echo $tennisballs['tennisball_id']; ?>" name="tbcolor" value="<?php echo $tennisballs['tb_brand']; ?>">
           </div>
           <div class="mb-3">
             <label for="tbcolor<?php echo $tennisballs['tennisball_id']; ?>" class="form-label">Tennis Ball Color</label>
