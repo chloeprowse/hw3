@@ -19,7 +19,9 @@
      <form method="post" action="">
   <div class="mb-3">
     <label for="tbbrand" class="form-label">Tennis Ball Brand</label>
-    <input type="text" class="form-control" id="tbbrand" name="tbbrand">
+    <?php
+$tbbrandList = select
+?>
   </div>
   <div class="mb-3">
     <label for="tbcolor" class="form-label">Tennis Ball Color</label>
