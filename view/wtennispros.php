@@ -44,7 +44,7 @@
 <div class="content">
     <div class="row">
         <div class="col">
-            <h1>Women's Tennis Pros</h1>
+            <h1>Women's Tennis Pros<img src="https://www.creativefabrica.com/wp-content/uploads/2022/01/20/Tennis-Player-Vector-Young-And-Healthy-Graphics-23800328-1.jpg" alt="A tennis ball" style="width: 200px; height: auto; border: 0px solid black; border-radius: 10px;"</h1>
         </div>
         <div class="col-auto">
             <?php include "view/wtennispros-newform.php"; ?>
