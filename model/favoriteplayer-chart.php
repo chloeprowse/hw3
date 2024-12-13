@@ -2,7 +2,6 @@
 if (!function_exists('selectfavoriteplayer')) {
     function selectfavoriteplayer() {
         try {
-          
             $conn = get_db_connection();
 
             $stmt = $conn->prepare("
@@ -11,7 +10,6 @@ if (!function_exists('selectfavoriteplayer')) {
                 GROUP BY name
             ");
 
-     
             $stmt->execute();
 
             // Fetch the results
@@ -27,14 +25,13 @@ if (!function_exists('selectfavoriteplayer')) {
             }
             throw $e;
         } finally {
-       
             if (isset($conn)) {
                 $conn->close();
             }
         }
     }
 }
-    <?php
+
 if (!function_exists('insertfavoriteplayer')) {
     function insertfavoriteplayer($name, $player) {
         try {
@@ -59,35 +56,5 @@ if (!function_exists('updatefavoriteplayer')) {
             $conn = get_db_connection();
             $stmt = $conn->prepare("UPDATE `favoriteplayer` SET `name` = ?, `favoriteplayer` = ? WHERE `favoriteplayer_id` = ?");
             $stmt->bind_param("ssi", $name, $player, $fid);
-            $success = $stmt->execute();
-            $conn->close();
-            return $success;
-        } catch (Exception $e) {
-            if (isset($conn)) {
-                $conn->close();
-            }
-            throw $e;
-        }
-    }
-}
+            $success
 
-if (!function_exists('deletefavoriteplayer')) {
-    function deletefavoriteplayer($fid) {
-        try {
-            $conn = get_db_connection();
-            $stmt = $conn->prepare("DELETE FROM `favoriteplayer` WHERE `favoriteplayer_id` = ?");
-            $stmt->bind_param("i", $fid);
-            $success = $stmt->execute();
-            $conn->close();
-            return $success;
-        } catch (Exception $e) {
-            if (isset($conn)) {
-                $conn->close();
-            }
-            throw $e;
-        }
-    }
-}
-?>
-
-?>
