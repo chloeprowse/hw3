@@ -43,13 +43,13 @@ include "view/favoriteplayer.php";
   <h1>Favorite Player Distribution</h1>
   <style>
     #favoritePlayerChart {
-      max-width: 100px; /* Limit the width */
-      max-height: 200px; /* Limit the height */
-      margin: auto; /* Center the chart */
+      width: 400px;  /* Set fixed width */
+      height: 300px; /* Set fixed height */
+      margin: auto;  /* Center the chart */
       display: block; /* Ensures proper centering */
     }
   </style>
-  <canvas id="favoritePlayerChart"></canvas>
+  <canvas id="favoritePlayerChart" width="400" height="300"></canvas>
 </div>
 
 <?php include "view/footer.php"; ?>
@@ -91,8 +91,8 @@ include "view/favoriteplayer.php";
       }]
     },
     options: {
-      responsive: true,
-      maintainAspectRatio: true, // Keep the aspect ratio
+      responsive: false, // Disable responsiveness
+      maintainAspectRatio: false, // Allow custom aspect ratio
       plugins: {
         legend: {
           position: 'top',
@@ -101,5 +101,6 @@ include "view/favoriteplayer.php";
     }
   });
 </script>
+
 
 
