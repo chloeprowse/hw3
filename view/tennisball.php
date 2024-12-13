@@ -51,6 +51,17 @@
             max-width: 600px;
             text-align: center;
         }
+
+        .filter-container {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        .filter-dropdown {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -63,8 +74,24 @@
                 <?php include "view/tennisball-newform.php"; ?>
             </div>
         </div>
+
+        <!-- Filter Dropdown -->
+        <div class="filter-container">
+            <label for="filterColor">Filter by Color:</label>
+            <select id="filterColor" class="filter-dropdown">
+                <option value="all">All Colors</option>
+                <?php
+                $uniqueColors = array_keys($colors);
+                foreach ($uniqueColors as $color) {
+                    echo "<option value=\"$color\">$color</option>";
+                }
+                ?>
+            </select>
+        </div>
+
+        <!-- Table Data -->
         <div class="table-responsive">
-            <table class="table">
+            <table id="tennisTable" class="table">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -78,7 +105,7 @@
                 </thead>
                 <tbody>
                     <?php while ($tennisballs = $tennisball->fetch_assoc()) { ?>
-                        <tr>
+                        <tr data-color="<?php echo $tennisballs['tb_color']; ?>">
                             <td><?php echo $tennisballs['tennisball_id']; ?></td>
                             <td><?php echo $tennisballs['tb_brand']; ?></td>
                             <td><?php echo $tennisballs['tb_color']; ?></td>
@@ -93,7 +120,7 @@
                                     <button type="submit" class="btn btn-primary" onclick="return confirm('Are you sure?');">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
-                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 1 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                                            <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 1 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
                                         </svg>
                                     </button>
                                 </form>
@@ -111,39 +138,21 @@
     <!-- Include D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-       
         const data = [
             <?php
-            $colors = [];
-            $tennisball->data_seek(0); 
-            while ($tb = $tennisball->fetch_assoc()) {
-                $colors[$tb['tb_color']] = ($colors[$tb['tb_color']] ?? 0) + 1;
-            }
             foreach ($colors as $color => $count) {
                 echo "{ color: '$color', count: $count },";
             }
             ?>
         ];
 
-     
         const prettyColors = [
-            "#FFB6C1", // Light Pink
-            "#87CEEB", // Sky Blue
-            "#FFD700", // Gold
-            "#90EE90", // Light Green
-            "#FF69B4", // Hot Pink
-            "#FFA07A", // Light Salmon
-            "#20B2AA", // Light Sea Green
-            "#9370DB", // Medium Purple
-            "#FFC0CB", // Pink
-            "#ADD8E6"  // Light Blue
+            "#FFB6C1", "#87CEEB", "#FFD700", "#90EE90",
+            "#FF69B4", "#FFA07A", "#20B2AA", "#9370DB",
+            "#FFC0CB", "#ADD8E6"
         ];
 
-      
-        const width = 600;
-        const height = 400;
-        const radius = Math.min(width, height) / 2;
-
+        const width = 600, height = 400, radius = Math.min(width, height) / 2;
         const svg = d3.select("#colorDistribution")
             .append("svg")
             .attr("width", width)
@@ -155,31 +164,48 @@
             .domain(data.map(d => d.color))
             .range(prettyColors);
 
-        const pie = d3.pie()
-            .value(d => d.count);
+        const pie = d3.pie().value(d => d.count);
+        const arc = d3.arc().innerRadius(0).outerRadius(radius);
 
-        const arc = d3.arc()
-            .innerRadius(0)
-            .outerRadius(radius);
+        const updateChart = (filteredData) => {
+            svg.selectAll('*').remove();
 
-        svg.selectAll('path')
-            .data(pie(data))
-            .enter()
-            .append('path')
-            .attr('d', arc)
-            .attr('fill', d => color(d.data.color))
-            .attr('stroke', 'white')
-            .style('stroke-width', '2px');
+            const paths = svg.selectAll('path')
+                .data(pie(filteredData))
+                .enter()
+                .append('path')
+                .attr('d', arc)
+                .attr('fill', d => color(d.data.color))
+                .attr('stroke', 'white')
+                .style('stroke-width', '2px');
 
-        svg.selectAll('text')
-            .data(pie(data))
-            .enter()
-            .append('text')
-            .text(d => `${d.data.color}: ${d.data.count}`)
-            .attr('transform', d => `translate(${arc.centroid(d)})`)
-            .style('text-anchor', 'middle')
-            .style('font-size', '14px')
-            .style('fill', 'white');
+            svg.selectAll('text')
+                .data(pie(filteredData))
+                .enter()
+                .append('text')
+                .text(d => `${d.data.color}: ${d.data.count}`)
+                .attr('transform', d => `translate(${arc.centroid(d)})`)
+                .style('text-anchor', 'middle')
+                .style('font-size', '14px')
+                .style('fill', 'white');
+        };
+
+        updateChart(data);
+
+        document.getElementById('filterColor').addEventListener('change', (event) => {
+            const selectedColor = event.target.value;
+
+            const rows = document.querySelectorAll('#tennisTable tbody tr');
+            rows.forEach(row => {
+                row.style.display = (selectedColor === 'all' || row.dataset.color === selectedColor) ? '' : 'none';
+            });
+
+            const filteredData = selectedColor === 'all'
+                ? data
+                : data.filter(d => d.color === selectedColor);
+
+            updateChart(filteredData);
+        });
     </script>
 </body>
 </html>
