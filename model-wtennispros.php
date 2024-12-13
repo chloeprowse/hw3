@@ -31,7 +31,7 @@ function selectwomenstennispros() {
         $rid = $conn->insert_id; 
 
       
-        $stmt3 = $conn->prepare("INSERT INTO `tourney` (`w_tennispro_id`, `rank_id`, `tourney_name`, `country`, `day_time`) VALUES (?, ?, ?, ?, ?);");
+        $stmt3 = $conn->prepare("INSERT INTO `tourney` (`w_tennispro_id`, `rank_id`, `tourney_name`, `tcountry`, `day_time`) VALUES (?, ?, ?, ?, ?);");
         $stmt3->bind_param("iisss", $wid, $rid, $tourneyname, $tcountry, $daytime);
         $stmt3->execute();
 
