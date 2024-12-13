@@ -1,6 +1,9 @@
-<select class="form-select" id=>
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
+<select class="form-select" id="tbbrand" name="tbbrand">
+  <?php
+while ($tbbranditem = $tbbrandList->fetch_assoc()) {
+?>
   <option value="3">Three</option>
+  <?php
+}
+?>
 </select>
