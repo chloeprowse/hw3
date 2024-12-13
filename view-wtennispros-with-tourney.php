@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Womens Tennis Pros Tournamnets</title> 
     <style>
         body {
-            background-image: url(https://c.stocksy.com/a/psw400/z9/1179663.jpg');
+            background-image: url(https://images.squarespace-cdn.com/content/v1/56200fcee4b02025054662d7/1462218374871-WK15KGQ07AYFJJ0AKADK/the-welcome-blog-US-Open);
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
@@ -15,7 +14,7 @@
             color: #fff;
         }
 
-         .content {
+        .content {
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 8px;
@@ -25,10 +24,10 @@
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
         }
 
-
         h1 {
-            text-align: left;
+            text-align: left; /* Aligns the title to the left */
             margin-bottom: 20px;
+            padding-left: 20px; /* Optional padding for spacing */
         }
 
         table {
