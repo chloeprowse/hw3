@@ -1,3 +1,7 @@
+<!-- Include DataTables CSS and JavaScript -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
 <div class="row">
   <div class="col">
@@ -11,15 +15,15 @@
 </div>
 
 <div class="table-responsive">
-  <table class="table">
+  <!-- Add an ID to the table for DataTables initialization -->
+  <table id="favoritePlayerTable" class="table">
     <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
         <th>Favorite Player</th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th>Edit</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -51,59 +55,17 @@
   </table>
 </div>
 
-<!-- Add Chart -->
-<div>
-  <canvas id="favoritePlayerChart"></canvas>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Initialize DataTables -->
 <script>
-  // Debugging: Verify Chart.js is loaded
-  console.log(typeof Chart);
-
-  // Prepare data for the chart
-  const labels = [
-    <?php
-    $favoriteplayer->data_seek(0); // Reset pointer to reuse query result
-    while ($row = $favoriteplayer->fetch_assoc()) {
-        echo "'" . $row['name'] . "', ";
-    }
-    ?>
-  ];
-  const data = [
-    <?php
-    $favoriteplayer->data_seek(0); // Reset pointer again
-    while ($row = $favoriteplayer->fetch_assoc()) {
-        echo $row['num_favoriteplayer'] . ", ";
-    }
-    ?>
-  ];
-
-  // Debugging: Verify the generated data
-  console.log('Labels:', labels);
-  console.log('Data:', data);
-
-  // Create the chart
-  const ctx = document.getElementById('favoritePlayerChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Favorite Players',
-        data: data,
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
-        hoverOffset: 4
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        }
-      }
-    }
+  $(document).ready(function() {
+    $('#favoritePlayerTable').DataTable({
+      "paging": true,
+      "searching": true,
+      "ordering": true,
+      "info": true
+    });
   });
 </script>
+
 
 
