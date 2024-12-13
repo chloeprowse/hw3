@@ -45,7 +45,7 @@ include "view/favoriteplayer.php";
     #favoritePlayerChart {
       width: 400px;  /* Set fixed width */
       height: 300px; /* Set fixed height */
-      margin: auto;  /* Center the chart */
+      margin: center;  /* Center the chart */
       display: block; /* Ensures proper centering */
     }
   </style>
