@@ -6,7 +6,7 @@
     <title>Woemns Tennis Ranks</title>
     <style>
         body {
-            background-image: url('https://i.pinimg.com/originals/1d/ee/64/1dee6471c82f1f2de1cc8ef8675381a6.jpg');
+            background-image: url('https://www.cityam.com/wp-content/uploads/2021/07/Previews-The-Championships---Wimbledon-2021-1325744741.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
