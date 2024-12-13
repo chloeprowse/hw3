@@ -1,3 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/originals/51/c4/15/51c415c838551e3ed76c232a43b54293.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            margin: 0;
+            padding: 0;
+            color: #fff;
+        }
+
+         .content {
+            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px auto;
+            max-width: 1200px;
+            color: black; /* Ensure text remains visible */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for contrast */
+        }
+
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            background-color: #fff;
+            color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background-color: #FF69B4;
+            border-color: #FF69B4;
+        }
+
+        .btn-primary:hover {
+            background-color: #FF1493;
+            border-color: #FF1493;
+        }
+    </style>
+</head>
+<body>
 <h1>Womens Tennis Pros Tournaments</h1>
 
 <div class="table-responsive">
