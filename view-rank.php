@@ -12,17 +12,17 @@
             background-attachment: fixed; 
             margin: 0;
             padding: 0;
-            color: #fff;
+            color: #000;
         }
 
          .content {
-            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+            background-color: rgba(255, 255, 255, 0.0);
             padding: 20px;
             border-radius: 8px;
             margin: 20px auto;
             max-width: 1200px;
-            color: black; /* Ensure text remains visible */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for contrast */
+            color: black; 
+          
         }
 
 
