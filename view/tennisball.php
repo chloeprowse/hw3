@@ -139,7 +139,7 @@
     <!-- Include D3.js -->
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
-        // Add sorting functionality
+      
         const headers = document.querySelectorAll('#tennisTable th[data-column]');
         headers.forEach(header => {
             header.addEventListener('click', () => {
@@ -161,7 +161,6 @@
             });
         });
 
-        // Add search functionality
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', () => {
             const filter = searchInput.value.toLowerCase();
@@ -173,7 +172,7 @@
             });
         });
 
-        // Existing pie chart code (unchanged)
+      
         const data = [
             <?php
             $colors = [];
