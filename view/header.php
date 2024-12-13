@@ -35,6 +35,9 @@
         <li class="nav-item">
           <a class="nav-link" href="favoriteplayer.php">Favorite Player</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="favoriteplayer-chart.php">Favorite Player Chart</a>
+        </li>
       </ul>
     </div>
   </div>
