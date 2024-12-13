@@ -123,7 +123,7 @@ function deletewomenstennispros($wid) {
         $stmt2->bind_param("i", $wid);
         $stmt2->execute();
 
-        // Step 3: Delete the main record from w_tennispro
+ 
         $stmt3 = $conn->prepare("DELETE FROM `w_tennispro` WHERE `w_tennispro_id` = ?");
         $stmt3->bind_param("i", $wid);
         $stmt3->execute();
