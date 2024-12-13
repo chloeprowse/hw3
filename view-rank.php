@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Womens Tennis Ranks</title>
+    <style>
 body {
     background-image: url('https://media.licdn.com/dms/image/D4D12AQFRXzY0ovkzCw/article-cover_image-shrink_720_1280/0/1683518502585?e=2147483647&v=beta&t=PMOGq4Xl-4JfjYwSiJ_-xbFamlvZ0Zfpzfg_eG-juL4');
     background-size: cover;
@@ -63,7 +70,7 @@ tr:nth-child(even) {
 <div class="content">
     <div class="row">
         <div class="col">
-            <h1>Women's Tennis Ranks</h1>
+            <h1>Womens Tennis Ranks</h1>
         </div>
         <div class="col-auto">
             <?php include "view-rank-newform.php"; ?>
