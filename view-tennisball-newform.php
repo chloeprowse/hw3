@@ -21,7 +21,6 @@
     <label for="tbbrand" class="form-label">Tennis Ball Brand</label>
     <?php
 $tbbrandList = selecttennisballForInput();
-$selectedtbbrand = 0;
 include "view-tbbrand-input-list.php";
 ?>
   </div>
