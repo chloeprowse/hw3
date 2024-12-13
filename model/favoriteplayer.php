@@ -2,31 +2,32 @@
 if (!function_exists('selectfavoriteplayer')) {
     function selectfavoriteplayer() {
         try {
-            
+            // Establish database connection
             $conn = get_db_connection();
 
-         
+            // Prepare the SQL query
             $stmt = $conn->prepare("
-                SELECT favoriteplayer_id, name, num(favoriteplayer) as num_favoriteplayer
+                SELECT favoriteplayer AS name, COUNT(*) AS num_favoriteplayer
                 FROM `favoriteplayer`
+                GROUP BY favoriteplayer
             ");
 
-       
+            // Execute the query
             $stmt->execute();
 
+            // Fetch the results
             $result = $stmt->get_result();
 
-          
+            // Close the connection
             $conn->close();
 
-            
+            // Return the result set
             return $result;
         } catch (Exception $e) {
-            
+            // Ensure the connection is closed in case of an error
             if (isset($conn)) {
                 $conn->close();
             }
-       
             throw $e;
         }
     }
