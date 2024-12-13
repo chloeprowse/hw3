@@ -1,6 +1,6 @@
 <?php
 require_once("util-db.php");
-require_once("model-wtennispros.php");
+require_once("model/wtennispros.php");
 
 $pageTitle = "Womens Tennis Pros";
 include "view-header.php";          
