@@ -2,7 +2,7 @@
 function selectwomenstennispros() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT w.w_tennispro_id, w.w_tennispro_name, w.country, r.rank_number, r.total_points, t.tourney_name, t.country, t.day_time, t.tourney_id FROM `w_tennispro` w join `tourney`t on w.w_tennispro_id=t.w_tennispro_id join `rank` r on t.rank_id=r.rank_id ");
+        $stmt = $conn->prepare("SELECT w.w_tennispro_id, w.w_tennispro_name, w.country, r.rank_number, r.total_points, t.tourney_name, t.tcountry, t.day_time, t.tourney_id FROM `w_tennispro` w join `tourney`t on w.w_tennispro_id=t.w_tennispro_id join `rank` r on t.rank_id=r.rank_id ");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -77,7 +77,7 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
             throw new Exception("No `tourney_id` found for `w_tennispro_id`: $wid");
         }
 
-        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `country` = ?, `day_time` = ? WHERE `tourney_id` = ?");
+        $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `tcountry` = ?, `day_time` = ? WHERE `tourney_id` = ?");
         $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $tid);
         $stmt2->execute();
 
