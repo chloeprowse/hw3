@@ -32,6 +32,6 @@ if (isset($_POST['actionType'])) {
   }
 }
 $rank = selectrank();
-include "view-rank.php";
-include "view-footer.php";
+include "view/rank.php";
+include "view/footer.php";
 ?>
