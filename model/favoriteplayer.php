@@ -7,7 +7,7 @@ if (!function_exists('selectfavoriteplayer')) {
 
          
             $stmt = $conn->prepare("
-                SELECT favoriteplayer_id, name, favoriteplayer 
+                SELECT favoriteplayer_id, name, num(favoriteplayer) as num_favoriteplayer
                 FROM `favoriteplayer`
             ");
 
