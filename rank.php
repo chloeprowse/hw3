@@ -4,7 +4,7 @@ require_once("util-db.php");
 require_once("model/rank.php");
 
 $pageTitle = "Rank";
-include "view-header.php";
+include "view/header.php";
 
 if (isset($_POST['actionType'])) {
   switch ($_POST['actionType']) { 
