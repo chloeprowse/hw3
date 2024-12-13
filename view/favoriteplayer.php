@@ -73,47 +73,7 @@
       "info": true
     });
   });
-<script>
-  const labels = [
-    <?php
-    $favoriteplayerChart = selectfavoriteplayerChart();
-    while ($row = $favoriteplayerChart->fetch_assoc()) {
-        echo "'" . $row['name'] . "', ";
-    }
-    ?>
-  ];
-
-  const data = [
-    <?php
-    $favoriteplayerChart->data_seek(0); // Reset pointer to reuse query result
-    while ($row = $favoriteplayerChart->fetch_assoc()) {
-        echo $row['num_favoriteplayer'] . ", ";
-    }
-    ?>
-  ];
-
-  const ctx = document.getElementById('favoritePlayerChart').getContext('2d');
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: labels,
-      datasets: [{
-        label: 'Favorite Players',
-        data: data,
-        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
-        hoverOffset: 4
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-        }
-      }
-    }
-  });
-</script>
+\
 
 
 
