@@ -6,7 +6,7 @@
     <title>Womens Tennis Pros Tournamnets</title> 
     <style>
         body {
-            background-image: url(https://images.squarespace-cdn.com/content/v1/56200fcee4b02025054662d7/1462218374871-WK15KGQ07AYFJJ0AKADK/the-welcome-blog-US-Open');
+            background-image: url(https://c.stocksy.com/a/psw400/z9/1179663.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed; 
