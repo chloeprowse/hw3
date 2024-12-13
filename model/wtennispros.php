@@ -2,7 +2,7 @@
 function selectwomenstennispros() {
     try {
         $conn = get_db_connection();
-        $stmt = $conn->prepare("SELECT w.w_tennispro_id, w.w_tennispro_name, w.country, r.rank_number, r.total_points, t.tourney_name, t.tcountry, t.day_time, t.tourney_id FROM `w_tennispro` w join `tourney`t on w.w_tennispro_id=t.w_tennispro_id join `rank` r on t.rank_id=r.rank_id ");
+        $stmt = $conn->prepare("SELECT w.w_tennispro_id, w.w_tennispro_name, w.country, r.rank_number, r.total_points, t.tourney_name, t.tcountry, t.day_time, t.tourney_id FROM `w_tennispro` w JOIN `tourney` t ON w.w_tennispro_id=t.w_tennispro_id JOIN `rank` r ON t.rank_id=r.rank_id");
         $stmt->execute();
         $result = $stmt->get_result();
         $conn->close();
@@ -13,24 +13,21 @@ function selectwomenstennispros() {
     }
 }
         
- function insertwomenstennispros($name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $daytime) {
+function insertwomenstennispros($name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $daytime) {
     try {
         $conn = get_db_connection();
         $conn->begin_transaction(); 
 
-        
         $stmt1 = $conn->prepare("INSERT INTO `w_tennispro` (`w_tennispro_name`, `country`) VALUES (?, ?);");
         $stmt1->bind_param("ss", $name, $country);
         $stmt1->execute();
         $wid = $conn->insert_id; 
 
-       
         $stmt2 = $conn->prepare("INSERT INTO `rank` (`rank_number`, `total_points`) VALUES (?, ?);");
         $stmt2->bind_param("ii", $ranknum, $totalpoints);
         $stmt2->execute();
         $rid = $conn->insert_id; 
 
-      
         $stmt3 = $conn->prepare("INSERT INTO `tourney` (`w_tennispro_id`, `rank_id`, `tourney_name`, `tcountry`, `day_time`) VALUES (?, ?, ?, ?, ?);");
         $stmt3->bind_param("iisss", $wid, $rid, $tourneyname, $tcountry, $daytime);
         $stmt3->execute();
@@ -44,12 +41,12 @@ function selectwomenstennispros() {
         throw $e;
     }
 }
+
 function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourneyname, $tcountry, $daytime) {
     try {
         $conn = get_db_connection();
         $conn->begin_transaction();
 
-     
         $stmtGetWid = $conn->prepare("SELECT `w_tennispro_id` FROM `w_tennispro` WHERE `w_tennispro_name` = ?");
         $stmtGetWid->bind_param("s", $name);
         $stmtGetWid->execute();
@@ -57,9 +54,10 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
         $stmtGetWid->fetch();
         $stmtGetWid->close();
 
+        if (!$wid) {
+            throw new Exception("No `w_tennispro_id` found for the given name: $name");
+        }
 
-
-       
         $stmt1 = $conn->prepare("UPDATE `w_tennispro` SET `w_tennispro_name` = ?, `country` = ? WHERE `w_tennispro_id` = ?");
         $stmt1->bind_param("ssi", $name, $country, $wid);
         $stmt1->execute();
@@ -72,21 +70,24 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
         $stmtGetTid->close();
 
         if (!$tid) {
-            throw new Exception("No `tourney_id` found for `w_tennispro_id`: $wid");
+            // Create a new tourney entry if none exists
+            $stmtCreateTourney = $conn->prepare("INSERT INTO `tourney` (`w_tennispro_id`, `rank_id`, `tourney_name`, `tcountry`, `day_time`) VALUES (?, (SELECT `rank_id` FROM `rank` WHERE `rank_number` = ? LIMIT 1), ?, ?, ?)");
+            $stmtCreateTourney->bind_param("iisss", $wid, $ranknum, $tourneyname, $tcountry, $daytime);
+            $stmtCreateTourney->execute();
+            $tid = $conn->insert_id; // Get the new tourney_id
+            $stmtCreateTourney->close();
         }
 
         $stmt2 = $conn->prepare("UPDATE `tourney` SET `tourney_name` = ?, `tcountry` = ?, `day_time` = ? WHERE `tourney_id` = ?");
         $stmt2->bind_param("sssi", $tourneyname, $tcountry, $daytime, $tid);
         $stmt2->execute();
 
-        
         $stmt3 = $conn->prepare("UPDATE `rank` SET `rank_number` = ?, `total_points` = ? WHERE `rank_id` = (SELECT `rank_id` FROM `tourney` WHERE `w_tennispro_id` = ? LIMIT 1)");
         $stmt3->bind_param("iii", $ranknum, $totalpoints, $wid);
         $stmt3->execute();
 
         $conn->commit();
 
-      
         $stmt1->close();
         $stmt2->close();
         $stmt3->close();
@@ -101,7 +102,6 @@ function updatewomenstennispros($name, $country, $ranknum, $totalpoints, $tourne
         throw $e;
     }
 }
-
 
 function deletewomenstennispros($wid) {
     try {
@@ -121,7 +121,6 @@ function deletewomenstennispros($wid) {
         $stmt2->bind_param("i", $wid);
         $stmt2->execute();
 
- 
         $stmt3 = $conn->prepare("DELETE FROM `w_tennispro` WHERE `w_tennispro_id` = ?");
         $stmt3->bind_param("i", $wid);
         $stmt3->execute();
@@ -135,7 +134,6 @@ function deletewomenstennispros($wid) {
 
         return true;
     } catch (Exception $e) {
-        // Rollback on error
         if (isset($conn) && $conn) {
             $conn->rollback();
             $conn->close();
@@ -145,3 +143,4 @@ function deletewomenstennispros($wid) {
 }
 
 ?>
+
