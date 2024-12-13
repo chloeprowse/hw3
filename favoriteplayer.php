@@ -31,6 +31,6 @@ if (isset($_POST['actionType'])) {
   }
 }
 $favoriteplayer = selectfavoriteplayer();
-include "view-favoriteplayer.php";
-include "view-footer.php";
+include "view/favoriteplayer.php";
+include "view/footer.php";
 ?>
