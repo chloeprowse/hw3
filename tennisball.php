@@ -31,6 +31,6 @@ if (isset($_POST['actionType'])) {
   }
 }
 $tennisball = selecttennisball();
-include "view-tennisball.php";
-include "view-footer.php";
+include "view/tennisball.php";
+include "view/footer.php";
 ?>
