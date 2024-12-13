@@ -51,9 +51,6 @@
         </div>
     </div>
 
-    <!-- Chart Container -->
-    <canvas id="tennisProChart"></canvas>
-
     <!-- Table Data -->
     <div class="table-responsive">
         <table class="table">
@@ -99,6 +96,9 @@
             </tbody>
         </table>
     </div>
+
+    <!-- Chart Container -->
+    <canvas id="tennisProChart"></canvas>
 </div>
 
 <!-- Chart.js Script -->
@@ -125,7 +125,7 @@
     // Create the chart
     const ctx = document.getElementById('tennisProChart').getContext('2d');
     new Chart(ctx, {
-        type: 'bar', // Change this to 'horizontalBar' for a horizontal bar chart
+        type: 'bar',
         data: {
             labels: proNames,
             datasets: [{
@@ -165,5 +165,3 @@
 </script>
 </body>
 </html>
-
-
