@@ -31,18 +31,7 @@ if (isset($_POST['actionType'])) {
   }
 }
 
-// Fetch data for the table
-$favoriteplayer = selectfavoriteplayer();
 
-include "view/favoriteplayer.php";
-?>
-
-<!-- Add link to chart page -->
-<div class="text-center mt-4">
-  <a href="favoriteplayer-chart.php" class="btn btn-info">View Chart</a>
-</div>
-
-<?php include "view/footer.php"; ?>
 
 
 
