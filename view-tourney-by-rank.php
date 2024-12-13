@@ -21,7 +21,7 @@
           <td><?php echo $tourneys['rank_number']; ?></td>
           <td><?php echo $tourneys['total_points']; ?></td>
           <td><?php echo $tourneys['tourney_name']; ?></td>
-          <td><?php echo $tourneys['country']; ?></td>
+          <td><?php echo $tourneys['tcountry']; ?></td>
           <td><?php echo $tourneys['day_time']; ?></td>
         </tr>
       <?php
